@@ -1,0 +1,36 @@
+/* src/components/Sidebar.css */
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
+  
+  .profile-section h2 {
+    margin: 10px 0;
+    font-size: 24px;
+  }
+  
+  .profile-section h4 {
+    margin: 5px 0;
+    font-size: 18px;
+    color: #f0e68c;
+  }
+  
+  .social-links a {
+    display: block;
+    margin: 10px 0;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .cv-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: white;
+    color: #FF6A00;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
