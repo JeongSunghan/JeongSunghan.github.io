@@ -1,14 +1,13 @@
-/* src/App.css */
 .app-container {
   display: flex;
   height: 100vh;
-  padding: 35px;  /* 전체 앱에 여백을 추가 */
-  box-sizing: border-box; /* 패딩이 전체 크기에 포함되도록 함 */
+  padding: 100px;  
+  box-sizing: border-box; 
 }
 
 .sidebar {
   width: 25%;
-  background: linear-gradient(135deg, #FF6A00, #FF9900);
+  background: linear-gradient(135deg,#FF6A00, #eb8290);
   color: white;
   display: flex;
   flex-direction: column;
