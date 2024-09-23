@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Sidebar from './components/Sidebar';
-import Home from './components/Home';
-import AboutMe from './components/AboutMe';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
+import Sidebar from './pages/Sidebar';
+import Home from './pages/Home';
+import AboutMe from './pages/AboutMe';
+import Skills from './pages/Skills';
+import Projects from './pages/Projects';
+import Contact from './pages/Contact';
 
 import './App.css';
 
