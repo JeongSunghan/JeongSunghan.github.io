@@ -49,18 +49,18 @@
 ---
 
 ## ✨ 주요 기능
-홈: 간단한 자기 소개와 프로필 사진을 포함한 페이지
-About Me: 나의 경력, 장점 및 취미를 소개하는 섹션
-Skills: 나의 기술 스택과 각 기술의 숙련도를 시각적으로 표현한 프로그래스바
-Projects: 팀 프로젝트와 개인 프로젝트에 대한 설명 및 GitHub 링크
-Contact: 연락처 정보 및 GitHub 프로필로의 연결
+홈: 간단한 자기 소개와 프로필 사진을 포함한 페이지 <br/>
+About Me: 나의 경력, 장점 및 취미를 소개하는 섹션 <br/> 
+Skills: 나의 기술 스택과 각 기술의 숙련도를 시각적으로 표현한 프로그래스바 <br/>
+Projects: 팀 프로젝트와 개인 프로젝트에 대한 설명 및 GitHub 링크 <br/>
+Contact: 연락처 정보 및 GitHub 프로필로의 연결 <br/>
 
 ## 🔗 추가 참고 자료
-React Documentation
-MUI Documentation
-GitHub Pages 배포 가이드
+React Documentation <br/>
+MUI Documentation <br/>
+GitHub Pages 배포 가이드 <br/>
 
 ## 👨‍💻 개발자
-Jeong Sunghan
-GitHub: Jeong Sunghan
-Email: sh2683@naver.com
+Jeong Sunghan<br/>
+GitHub: Jeong Sunghan<br/>
+Email: sh2683@naver.com<br/>
