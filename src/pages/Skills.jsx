@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import "../styles/Skills.css";
 
 const Skills = () => {
   const [animateClass, setAnimateClass] = useState("");
 
-  useEffect(() => {    
+  useEffect(() => {
     setAnimateClass("animate__animated animate__backInRight");
   }, []);
 
   useEffect(() => {
-    const progressBars = document.querySelectorAll(".progress-bar");    
+    const progressBars = document.querySelectorAll(".progress-bar");
     progressBars.forEach((bar) => {
       const width = bar.getAttribute("data-width");
       bar.style.width = width;
@@ -64,8 +65,8 @@ const Skills = () => {
 
         <div className="skill-item">
           <span className="skill-name">HTML/CSS</span>
-          <div className="progress">
-            <div className="progress-bar" data-width="95%"></div>{" "}            
+          <div className="progress">        
+            <div className="progress-bar" data-width="95%"></div>
           </div>
         </div>
 

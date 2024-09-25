@@ -1,3 +1,4 @@
+/* Skills & Experience Container */
 .skills-experience-container {
   display: flex;
   justify-content: space-between;
@@ -7,10 +8,10 @@
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
-  text-align: left; 
+  text-align: left;
 }
 
-
+/* Experience Section */
 .experience {
   flex: 0.7;
 }
@@ -21,7 +22,7 @@
 
 .section-title {
   font-size: 1.5rem;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   color: #333;
 }
 
@@ -58,16 +59,18 @@
   margin-left: 0.5rem;
 }
 
+/* Skill Section */
 .skill-item {
-  margin-bottom: 15px;
-  font-size: 0.9rem;
+  margin-bottom: 20px;
+  position: relative; /* 텍스트 위치를 위한 상대 위치 */
 }
 
 .skill-name {
-  font-size: 1rem;
+  font-size: 1.1rem;
   margin-bottom: 5px;
 }
 
+/* Progress Bar Styles */
 .progress {
   background-color: #e0e0e0;
   border-radius: 5px;
@@ -78,17 +81,36 @@
 }
 
 .progress-bar {
-  background: linear-gradient(135deg,#FE716D,#f77e7a, #fcad67, #FE943A);
+  background: linear-gradient(135deg, #FE716D, #f77e7a, #fcad67, #FE943A);
   height: 100%;
   border-radius: 5px;
-  width: 0%; 
+  width: 0%;
   position: absolute;
   top: 0;
   left: 0;
-  transition: width 3s ease-in-out; 
+  transition: width 3s ease-in-out; /* 부드러운 애니메이션 */
 }
 
+/* Percent Text Hidden by Default */
+.nav-progress-text {
+  font-size: 1rem;
+  margin-top: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateY(-10px);
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+}
 
+/* Hover Effect: Show Percent */
+.skill-item:hover .nav-progress-text {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Mobile Responsiveness */
 @media (max-width: 768px) {
   .skills-experience-container {
     flex-direction: column;

@@ -39,7 +39,7 @@ const Home = () => {
         ) : (
           <div className="animate__animated animate__fadeIn">
             <h1 className="home-message">
-              포트폴리오를 보시겠습니까?
+              Portfolio Open?
               <p className="home-message2">Yes!</p>
             </h1>            
           </div>

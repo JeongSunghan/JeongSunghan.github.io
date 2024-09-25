@@ -39,7 +39,7 @@ const projectsData = [
     category: "Side",
     title: "Worlde 게임",
     img: "image/project5.png",
-    link: "https://github.com/your-username/project5",
+    link: "https://github.com/JeongSunghan/wordle-game",
     description: "React를 활용한 Wordle 게임을 모방한 단어 맞추기 게임 프로젝트입니다.",
   },
   {
