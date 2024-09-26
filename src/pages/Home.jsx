@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; 
+
+
 import "../styles/Home.css";
 import "animate.css";
+import "../styles/Responsive.css";
 
 const Home = () => {
   const [isHovered, setIsHovered] = useState(false);

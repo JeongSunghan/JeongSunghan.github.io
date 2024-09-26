@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import "../styles/AboutMe.css";
 import { Box, Typography } from "@mui/material";
+
+import "../styles/AboutMe.css";
+import "../styles/Responsive.css";
 
 const AboutMe = () => {
   const [animateClass, setAnimateClass] = useState("");
@@ -28,7 +30,7 @@ const AboutMe = () => {
           <Typography
             variant="h3"
             className="section-title"
-            sx={{ ml: -2, mt: 3 }}
+            sx={{ ml: -2, mt: -2}}
           >
             About <span className="highlight">ME</span>!
           </Typography>
@@ -36,10 +38,10 @@ const AboutMe = () => {
             <Box className="about-description">
               <Typography variant="body1" className="description-text">
                 <span style={{ fontWeight: "bold" }}>
-                  "누군가에게 도움이 되는 행복한 개발자가 되자!"
+                  "FE / BE 가리지 않고 다재다능한 개발자가 되자!"
                   <br />
                 </span>
-                저는 어떤 목표가 생긴다면 무조건 하고싶은 성격입니다.
+                저는 어떤 목표가 생긴다면 무조건 해야하는 성격입니다.
                 <br />
                 개발자라는 직군을 알게되고 나서 개발 하고싶어 교육을 배우면서
                 분야가 다양한것을 알게되고,

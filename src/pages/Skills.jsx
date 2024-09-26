@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+
+import "../styles/Responsive.css";
 import "../styles/Skills.css";
 
 const Skills = () => {
@@ -65,8 +66,9 @@ const Skills = () => {
 
         <div className="skill-item">
           <span className="skill-name">HTML/CSS</span>
-          <div className="progress">        
+          <div className="progress">
             <div className="progress-bar" data-width="95%"></div>
+            <span className="nav-progress-text">95%</span> {/* 퍼센트 텍스트 */}
           </div>
         </div>
 
@@ -74,6 +76,7 @@ const Skills = () => {
           <span className="skill-name">JavaScript</span>
           <div className="progress">
             <div className="progress-bar" data-width="75%"></div>
+            <span className="nav-progress-text">75%</span>
           </div>
         </div>
 
@@ -81,6 +84,7 @@ const Skills = () => {
           <span className="skill-name">UI / UX</span>
           <div className="progress">
             <div className="progress-bar" data-width="80%"></div>
+            <span className="nav-progress-text">80%</span>
           </div>
         </div>
 
@@ -88,6 +92,7 @@ const Skills = () => {
           <span className="skill-name">Java</span>
           <div className="progress">
             <div className="progress-bar" data-width="85%"></div>
+            <span className="nav-progress-text">85%</span>
           </div>
         </div>
 
@@ -95,6 +100,7 @@ const Skills = () => {
           <span className="skill-name">Spring Boot</span>
           <div className="progress">
             <div className="progress-bar" data-width="65%"></div>
+            <span className="nav-progress-text">65%</span>
           </div>
         </div>
 
@@ -102,6 +108,7 @@ const Skills = () => {
           <span className="skill-name">React</span>
           <div className="progress">
             <div className="progress-bar" data-width="55%"></div>
+            <span className="nav-progress-text">55%</span>
           </div>
         </div>
       </div>

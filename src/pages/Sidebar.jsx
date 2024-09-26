@@ -7,7 +7,9 @@ import {
   Work as ProjectsIcon,
   ContactMail as ContactIcon,
 } from "@mui/icons-material";
+
 import "../styles/Sidebar.css";
+import "../styles/Responsive.css";
 
 const Sidebar = () => {
   return (
