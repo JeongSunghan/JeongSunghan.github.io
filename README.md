@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# Jeong Sunghan's Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 📝 프로젝트 개요
+이 프로젝트는 **Jeong Sunghan**의 개인 포트폴리오 입니다.
+개발자로서의 경력, 기술 스택, 프로젝트 경험 등을 소개하며, GitHub Pages를 통해 배포되었습니다.
 
-## Available Scripts
+👉 [포트폴리오 웹사이트 바로가기](https://jeongsunghan.github.io/)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 📂 프로젝트 구조
+```bash
+├── README.md
+├── node_modules/
+├── public/
+│   ├── favicon.ico
+│   ├── index.html
+│   └── manifest.json
+├── 📂 src/
+│   ├── 📂 components/
+│   │   ├── AboutMe.jsx
+│   │   ├── Contact.jsx
+│   │   ├── Home.jsx
+│   │   ├── Projects.jsx
+│   │   ├── Sidebar.jsx
+│   │   ├── Skills.jsx
+│   └── 📂 styles/
+│       ├── AboutMe.css
+│       ├── Contact.css
+│       ├── Home.css
+│       ├── Projects.css
+│       ├── Sidebar.css
+│       ├── Skills.css
+├── .gitignore
+├── package.json
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🛠️ 사용된 기술 스택
+- **React.js**: SPA(단일 페이지 애플리케이션) 구현
+- **CSS**: 사용자 정의 스타일 적용 및 레이아웃 구성
+- **MUI(Material-UI)**: 빠르고 현대적인 UI 구성
+- **Animate.css**: 간단한 애니메이션 효과 추가
+- **gh-pages**: GitHub Pages 배포
+- **GitHub API**: 프로젝트의 GitHub 저장소 연동
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## ✨ 주요 기능
+홈: 간단한 자기 소개와 프로필 사진을 포함한 페이지 <br/>
+About Me: 나의 경력, 장점 및 취미를 소개하는 섹션 <br/> 
+Skills: 나의 기술 스택과 각 기술의 숙련도를 시각적으로 표현한 프로그래스바 <br/>
+Projects: 팀 프로젝트와 개인 프로젝트에 대한 설명 및 GitHub 링크 <br/>
+Contact: 연락처 정보 및 GitHub 프로필로의 연결 <br/>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🔗 추가 참고 자료
+React Documentation <br/>
+MUI Documentation <br/>
+GitHub Pages 배포 가이드 <br/>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 👨‍💻 개발자
+Jeong Sunghan<br/>
+GitHub: Jeong Sunghan<br/>
+Email: sh2683@naver.com<br/>
