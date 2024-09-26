@@ -30,17 +30,19 @@ const AboutMe = () => {
           <Typography
             variant="h3"
             className="section-title"
-            sx={{ ml: -2, mt: -2}}
+            sx={{ ml: -2, mt: -2 }}
           >
             About <span className="highlight">ME</span>!
           </Typography>
           <Box className="about-content">
             <Box className="about-description">
               <Typography variant="body1" className="description-text">
-                <span style={{ fontWeight: "bold" }}>
-                  "FE / BE 가리지 않고 다재다능한 개발자가 되자!"
-                  <br />
-                </span>
+                <div className="animate__animated animate__bounceInDown">
+                  <span style={{ fontWeight: "bold", color: "#ff6a00" }}>
+                    "FE / BE 가리지 않고 다재다능한 개발자가 되자!"
+                    <br />
+                  </span>
+                </div>
                 저는 어떤 목표가 생긴다면 무조건 해야하는 성격입니다.
                 <br />
                 개발자라는 직군을 알게되고 나서 개발 하고싶어 교육을 배우면서
