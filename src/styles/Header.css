@@ -1,37 +1,16 @@
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  background-color: black;
+header {
+  background-color: #333;
   color: white;
+  padding: 1rem;
 }
 
-.logo {
-  font-size: 1.5rem;
+nav ul {
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
 }
 
-.gitLink a,
-.contact-info a {
-  text-decoration: none; /* 특정 영역에 있는 a 태그에 밑줄 제거 */
-  color: inherit; /* 필요하다면 색상도 상속하도록 설정 */
-}
-
-/* 만약 링크에 hover 스타일도 필요하다면 */
-a:hover {
+nav ul li a {
+  color: white;
   text-decoration: none;
-}
-
-.contact-info {
-  display: flex;
-  gap: 10px;
-}
-
-.auth-links {
-  display: flex;
-  gap: 10px;  
-}
-
-.auth-links a {
-  color: white;  
 }
