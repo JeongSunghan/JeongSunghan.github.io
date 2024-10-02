@@ -1,75 +1,109 @@
-/* 전체 컨테이너 설정 */
-.home-container {
+.loading-screen {
   display: flex;
-  height: 100vh;  /* 전체 화면 높이 */
-}
-
-/* 왼쪽 섹션 */
-.left-section {
-  flex: 1;  /* 왼쪽 섹션의 너비 */
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #f0f0f0;  /* 배경색은 밝은 회색 */
-  padding: 20px;
-}
-
-/* 프로필 이미지 스타일 */
-.profile-image {
-  width: 80%;  /* 이미지 너비 */
-  height: auto;  /* 높이는 자동으로 조정 */
-  margin-bottom: 20px;
-}
-
-/* 텍스트 스타일 */
-.intro-text {
-  text-align: left;
-}
-
-.intro-text h1 {
-  font-size: 2.5rem;
-  margin: 0;
-}
-
-.intro-text h2 {
+  height: 100vh;
   font-size: 2rem;
-  margin: 10px 0;
-}
-
-.intro-text p {
-  font-size: 1.5rem;
+  background-color: #f0f0f0; /* 로딩 화면 배경색 */
   color: #333;
 }
 
-/* 오른쪽 섹션 */
-.right-section {
+.home-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden; 
+  transition: all 0.5s ease;
+}
+
+/* 좌측 섹션 (이미지 및 텍스트) */
+.left-section {
   flex: 1;
+  position: relative;
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  
+  transition: 0.5s ease;
+  filter: blur(3px);  
+}
+
+.profile-image:hover{  
+  transition: 0.5s ease;
+  filter: blur(0px);    
+}
+
+.text-overlay {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  color: black;
+  text-align: left;
+}
+
+.text-overlay h1 {
+  font-size: 4rem;
+  margin: 0;
+}
+
+.text-overlay h2 {
+  font-size: 3rem;
+  margin: 0.15rem 0;
+}
+
+.text-overlay p {
+  font-size: 1.5rem;
+  margin: 35rem 0 0 0rem;
+  position: absolute;  
+}
+
+/* 우측 섹션 (about me 및 프로젝트 정보) */
+.right-section {
+  flex: 2.65; 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 20px;
+  transition: all 0.5s ease;
+}
+
+.about-me-section,
+.projects-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: flex-grow 0.5s ease;
+  cursor: pointer;
 }
 
 .about-me-section {
-  background-color: #e0e0e0;  /* 배경색은 약간 더 어두운 회색 */
+  background-color: #d3d3d3;
   flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
-.project-section {
-  background-color: #333;  /* 배경색은 어두운 회색/검정 */
+.projects-section {
+  background-color: #333;
+  color: #fff;
   flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;  /* 텍스트는 흰색 */
 }
 
-/* 제목 스타일 */
-.about-me-section h2, .project-section h2 {
-  font-size: 3rem;
-  font-weight: bold;
+.about-me-section,
+.projects-section {
+  cursor: pointer; 
+  text-decoration: none; 
+  color: inherit; /* 글자 색상 유지 */
+}
+
+/* 호버 효과 */
+.about-me-section:hover {
+  flex-grow: 1.5; /* about me 섹션을 살짝 확장 */
+}
+
+.projects-section:hover {
+  flex-grow: 1.5; /* project 섹션을 살짝 확장 */
 }
