@@ -1,17 +1,7 @@
-.loading-screen {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  font-size: 2rem;
-  background-color: #f0f0f0; /* 로딩 화면 배경색 */
-  color: #333;
-}
-
 .home-container {
   display: flex;
   height: 100vh;
-  overflow: hidden; 
+  overflow: hidden;
   transition: all 0.5s ease;
 }
 
@@ -35,17 +25,19 @@
   filter: blur(3px);  
 }
 
-.profile-image:hover{  
+.profile-image:hover {  
   transition: 0.5s ease;
   filter: blur(0px);    
 }
 
+/* 텍스트 오버레이 수정 */
 .text-overlay {
   position: absolute;
   top: 10%;
   left: 10%;
   color: black;
   text-align: left;
+  z-index: 10; /* 이미지 위로 올라오도록 z-index 추가 */
 }
 
 .text-overlay h1 {
@@ -69,11 +61,12 @@
   flex: 2.65; 
   display: flex;
   flex-direction: column;
-  transition: all 0.5s ease;
+  font-size: xx-large;
 }
 
-.about-me-section,
-.projects-section {
+/* 호버 효과 수정 */
+.home-about-me-section,
+.home-projects-section {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -81,29 +74,21 @@
   cursor: pointer;
 }
 
-.about-me-section {
+.home-about-me-section {
   background-color: #d3d3d3;
   flex: 1;
 }
 
-.projects-section {
+.home-projects-section {
   background-color: #333;
   color: #fff;
   flex: 1;
 }
 
-.about-me-section,
-.projects-section {
-  cursor: pointer; 
-  text-decoration: none; 
-  color: inherit; /* 글자 색상 유지 */
+.home-about-me-section:hover {
+  flex-grow: 1.5; /* 호버 시 확장 */
 }
 
-/* 호버 효과 */
-.about-me-section:hover {
-  flex-grow: 1.5; /* about me 섹션을 살짝 확장 */
-}
-
-.projects-section:hover {
-  flex-grow: 1.5; /* project 섹션을 살짝 확장 */
+.home-projects-section:hover {
+  flex-grow: 1.5; /* 호버 시 확장 */
 }

@@ -1,21 +1,67 @@
-/* 푸터 스타일 */
-.footer {
-  background-color: #000; /* 검정 배경 */
-  color: #fff; /* 흰색 텍스트 */
-  padding: 0.5rem;
-  text-align: center;
-  border-top: 2px solid rgba(255, 255, 255, 0.5); /* 흰색 투명 선 */
-  font-size: 1rem;
-  margin-top: auto;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: slideUp 0.8s ease-in-out forwards;
+.footer-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #111111;
+  color: #fff;   
+  height: 15vh;       
 }
 
-/* 푸터가 위로 슬라이드되며 나타나는 애니메이션 */
-@keyframes slideUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.footer-nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 50px;  
+}
+
+.footer-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.footer-link:hover {
+  color: #ddd;
+}
+
+.arrow {
+  font-size: 24px;
+}
+
+.footer-info {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 50px;
+  margin-top: 20px;  
+}
+
+.footer-text {
+  text-align: left;
+}
+
+.footer-social {
+  text-align: right;
+}
+
+.footer-social a {
+  color: #fff;
+  font-size: 24px;
+  margin: 0 10px;
+}
+
+.footer-social a:hover {
+  color: #ddd;
+}
+
+.footer-bottom {
+  padding-top: 20px;
+  border-top: 1px solid #3d3d3d;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.footer-bottom p {
+  color: #fff;
+  font-size: 14px;
 }
