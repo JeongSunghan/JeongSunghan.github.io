@@ -1,29 +1,26 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Sidebar from './pages/Sidebar';
 import Home from './pages/Home';
 import AboutMe from './pages/AboutMe';
-import Skills from './pages/Skills';
 import Projects from './pages/Projects';
 import Contact from './pages/Contact';
 
-import './App.css';
+// import Loading from './components/Loading';
 
-function App() {
+const App = () => {
   return (
-    <Router>
-      <div className="app-container">
-        <Sidebar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<AboutMe />} />
-          <Route path="/skills" element={<Skills />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </div>
+    <Router>      
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<AboutMe />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/contact" element={<Contact />} />
+
+        {/* Loading 페이지 테스트 */}
+        {/* <Route path="/loading" element={<Loading />} /> */}
+      </Routes>      
     </Router>
   );
-}
+};
 
 export default App;

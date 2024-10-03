@@ -1,23 +1,7 @@
-.app-container {
-  display: flex;
-  height: 100vh;
-  padding: 100px;  
-  box-sizing: border-box; 
-  background-color: #FBEEDD
-}
-
-.home-section  {
-  min-width: 75%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #ffffff;
-  border-top-right-radius: 25px;
-  border-bottom-right-radius: 25px;
-  padding: 40px;
-}
-
-h1, h3 {
-  margin: 0;
-  padding: 10px;
-}
+ .App {        
+    background-color: #000;
+    font-family: 'Arial', sans-serif;
+    overflow-y: hidden;
+  }
+  
+  

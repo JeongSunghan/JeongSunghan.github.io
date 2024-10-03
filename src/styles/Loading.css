@@ -1,0 +1,79 @@
+.loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2c2c2c; 
+  z-index: 9999;
+}
+
+.loading-text {
+  display: flex;
+  font-size: 3.5rem; 
+  font-weight: bold;
+  letter-spacing: 0.5rem;
+  color: #fff; 
+}
+
+.loading-letter {
+  display: inline-block;
+  opacity: 0;
+  animation: bounce 1.25s infinite ease-in-out, scaleUp 1.25s infinite ease-in-out;
+}
+
+.loading-letter:nth-child(1) {
+  animation-delay: 0s;
+}
+.loading-letter:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.loading-letter:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.loading-letter:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.loading-letter:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.loading-letter:nth-child(6) {
+  animation-delay: 0.5s;
+}
+.loading-letter:nth-child(7) {
+  animation-delay: 0.6s;
+}
+
+@keyframes bounce {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  25% {
+    opacity: 1;
+    transform: translateY(-20px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2); 
+  }
+  100% {
+    transform: scale(1);
+  }
+}

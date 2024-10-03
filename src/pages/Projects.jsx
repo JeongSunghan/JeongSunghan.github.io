@@ -1,103 +1,98 @@
-import React, { useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
+
 import "../styles/Projects.css";
-import "../styles/Responsive.css";
-
-const projectsData = [
-  {
-    id: 1,
-    category: "Team",
-    title: "FlowNary",
-    img: "image/project1.png",
-    link: "https://github.com/JeongSunghan/FinalProject-flowNay",
-    description: "이 프로젝트는 모던 세대의 소통을 위한\n SNS 및 웹 서버 프로젝트입니다.",
-  },
-  {
-    id: 2,
-    category: "Team",
-    title: "맛Zip",
-    img: "image/project2.png",
-    link: "https://github.com/JeongSunghan/FoodProject",
-    description: "맛집 정보 제공 웹사이트 프로젝트로,\n 사용자들이 다양한 맛집을 공유할 수 있습니다.",
-  },
-  {
-    id: 3,
-    category: "Team",
-    title: "스키 대여/판매 및 경매",
-    img: "image/project3.png",
-    link: "https://github.com/JeongSunghan/miniProject",
-    description: "스키 장비 대여 및 판매 경매 기능을 제공하는\n 웹 개발 프로젝트입니다.",
-  },
-  {
-    id: 4,
-    category: "Side",
-    title: "조커뽑기",
-    img: "image/project4.png",
-    link: "",
-    description: "개발 중",
-  },
-  {
-    id: 5,
-    category: "Side",
-    title: "Worlde 게임",
-    img: "image/project5.png",
-    link: "https://github.com/JeongSunghan/wordle-game",
-    description: "Wordle 게임 클론하여 HTML,CSS,JS만 사용해,\n 단어를 맞추는 웹 게임 프로젝트입니다.",
-  },
-  {
-    id: 6,
-    category: "Side",
-    title: "포트폴리오",
-    img: "image/project6.png",
-    link: "https://github.com/JeongSunghan/JeongSunghan.github.io",
-    description: "React로 만든 포트폴리오 입니다.",
-  },
-];
-
-const categories = ["All", "Team", "Side"];
+import projectsData from "../data/projectsData"; 
+import Footer from "../components/Footer";
+import ProjectCard from "../components/ProjectCard"; 
 
 const Projects = () => {
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const containerRef = useRef(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  const filteredProjects =
-    selectedCategory === "All"
-      ? projectsData
-      : projectsData.filter((project) => project.category === selectedCategory);
+  // 카드 위치 및 스타일 계산 로직(GPT 도움받은 로직)
+  const calculateCardStyle = (index, currentIndex, totalProjects) => {
+    const position = (index - currentIndex + totalProjects) % totalProjects;
+
+    const scale = 1 - position * 0.1; // 각 카드의 크기 비율
+    const translateX = position * -150; // 카드의 x축 이동값
+    const translateZ = position * -50; // 카드의 z축 이동값
+    const opacity = 1 - position * 0.2; // 카드의 투명도
+
+    return {
+      transform: `translateX(${translateX}px) scale(${scale}) translateZ(${translateZ}px)`,
+      opacity: opacity,
+      zIndex: totalProjects - position, // z-index로 카드 레이어 순서 지정
+      transition: "transform 0.5s ease, opacity 0.5s ease", // 애니메이션 설정
+    };
+  };
+
+  // 마우스 휠로 좌우 스크롤 가능
+  useEffect(() => {
+    const handleWheel = (event) => {
+      if (event.deltaY > 0) {
+        setCurrentIndex((prev) => (prev + 1) % projectsData.length);
+      } else {
+        setCurrentIndex(
+          (prev) => (prev - 1 + projectsData.length) % projectsData.length
+        );
+      }
+    };
+
+    const container = containerRef.current;
+    if (container) {
+      container.addEventListener("wheel", handleWheel, { passive: true });
+    }
+    return () => {
+      if (container) {
+        container.removeEventListener("wheel", handleWheel);
+      }
+    };
+  }, []);
+
+  const handleClick = (index) => {
+    setCurrentIndex(index);
+  };
+
+  // 좌우 화살표 클릭 핸들러
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % projectsData.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + projectsData.length) % projectsData.length);
+  };
 
   return (
-    <div className="projects-section">
-      <h2 className="project-section-title">Projects</h2>
-      <div className="categories">
-        {categories.map((category) => (
-          <span
-            key={category}
-            className={`category-item ${
-              category === selectedCategory ? "active" : ""
-            }`}
-            onClick={() => setSelectedCategory(category)}
-          >
-            {category}
-          </span>
-        ))}
+    <div className="projects-page">
+      <h2 className="projects-title">Projects</h2>            
+      <div className="projects-container" ref={containerRef}>
+        <button className="project-arrow left-arrow" onClick={handlePrev}>
+          ◀
+        </button>
+        {projectsData.map((project, index) => {
+          const style = calculateCardStyle(
+            index,
+            currentIndex,
+            projectsData.length
+          );
+          return (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              style={style} 
+              onClick={() => handleClick(index)} 
+            />
+          );
+        })}
+        <button className="project-arrow right-arrow" onClick={handleNext}>
+          ▶
+        </button>
       </div>
-      <div className="projects-grid">
-        {filteredProjects.map((project) => (
-          <div
-            key={project.id}
-            className="project-item"
-            onClick={() => window.open(project.link, "_blank")}
-            style={{ cursor: "pointer" }}
-          >
-            <img src={project.img} alt={project.title} />
-            <div className="open-project-text">{project.title}</div> {/* Open Project 텍스트 추가 */}
-            <div className="project-details">
-              <h2 className="category">{project.category}</h2>              
-              <p className="project-description">{project.description}</p> {/* 설명 추가 */}
-            </div>
-          </div>
-        ))}
-      </div>
+      {/* Footer 섹션으로 감싸기 */}
+      <section className="projects-footer-section">
+        <Footer />
+      </section>
     </div>
   );
 };
-
 export default Projects;

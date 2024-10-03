@@ -1,53 +1,53 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; 
-
-
 import "../styles/Home.css";
-import "animate.css";
-import "../styles/Responsive.css";
+import profileImage from "../assets/image/about-me-home.jpg";
+import { useNavigate } from "react-router-dom";
+import Loading from "../components/Loading";
 
 const Home = () => {
-  const [isHovered, setIsHovered] = useState(false);
-  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate(); 
 
-  // 마우스를 올리면 상태가 변경
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-
-  // 마우스를 내리면 상태가 초기화
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
-  
-  const handleClick = () => {
-    if (isHovered) {
+  const handleAboutMeClick = () => {
+    setIsLoading(true);
+    setTimeout(() => {
       navigate("/about");
-    }
+    }, 1500); // 로딩 시간을 1.5초로 조정
+  };
+
+  const handleProjectsClick = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      navigate("/projects");
+    }, 1500); // 로딩 시간을 1.5초로 조정
   };
 
   return (
-    <div className="home-section">
-      <div
-        className="home-section2"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        onClick={handleClick} 
-      >
-        {!isHovered ? (
-          <div className="animate__animated animate__bounce">
-            <h1 className="home-name">Jeong Sunghan</h1>
-            <h3 className="home-tag">Junior Developer</h3>
+    <div className="home-container">
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <>
+          <div className="home-left-section">
+            <div className="home-image-container">
+              <img src={profileImage} alt="Profile" className="home-profile-image" />
+              <div className="home-text-overlay">
+                <h1>반갑습니다!</h1>
+                <h2>JEONG SUNGHAN</h2>
+                <p>JUNIOR Web Developer 입니다</p>
+              </div>
+            </div>
           </div>
-        ) : (
-          <div className="animate__animated animate__fadeIn">
-            <h1 className="home-message">
-              Portfolio Open?
-              <p className="home-message2">Yes!</p>
-            </h1>            
+          <div className="home-right-section">
+            <div onClick={handleAboutMeClick} className="home-section home-about-me-section">
+              <h2>About Me</h2>
+            </div>
+            <div onClick={handleProjectsClick} className="home-section home-projects-section">
+              <h2>Projects</h2>
+            </div>
           </div>
-        )}
-      </div>
+        </>
+      )}
     </div>
   );
 };
