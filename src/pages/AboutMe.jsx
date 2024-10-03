@@ -41,16 +41,18 @@ const AboutMe = () => {
       });
     }, options);
 
-    sectionRefs.current.forEach((section) => {
+    const currentSectionRefs = sectionRefs.current;
+
+    currentSectionRefs.forEach((section) => {
       if (section) observer.observe(section);
     });
 
     return () => {
-      sectionRefs.current.forEach((section) => {
+      currentSectionRefs.forEach((section) => {
         if (section) observer.unobserve(section);
       });
     };
-  }, []); 
+  }, []);
 
   return (
     <div className="about-me-container">
@@ -76,16 +78,11 @@ const AboutMe = () => {
                 ": Click me!"
               ) : (
                 <>
-                  안녕하세요, 저는 도전적인 개발자 정성한입니다.
-                  <br />
-                  군 복무를 하면서 개발에 관심을 가지게 되었고,
-                  <br />
-                  천천히 개발 교육을 들으며 개발을 시작하게 되었습니다.
-                  <br />
-                  늦게 시작했지만 누구보다 개발에 열정적이고 싶으며,
-                  <br />
-                  다양한 분야에서 개발할 수 있는
-                  <br />
+                  안녕하세요, 저는 도전적인 개발자 정성한입니다. <br />
+                  군 복무를 하면서 개발에 관심을 가지게 되었고, <br />
+                  천천히 개발 교육을 들으며 개발을 시작하게 되었습니다. <br />
+                  늦게 시작했지만 누구보다 개발에 열정적이고 싶으며, <br />
+                  다양한 분야에서 개발할 수 있는 <br />
                   팀에게 항상 도움이 되는 멋진 개발자가 되고 싶습니다.
                 </>
               )}
@@ -115,8 +112,8 @@ const AboutMe = () => {
                 <p>
                   도전하는 것을 정말 좋아합니다.
                   <br />
-                  새로운 무언가가 있다면 도전하고자 하며, 어려움이 닥쳐도 목표를
-                  이룰 때까지 끈기 있게 끝까지 도전합니다.
+                  새로운 무언가가 있다면 도전하고자 하며, 어려움이 닥쳐도 목표를 이룰 때까지 
+                  끈기 있게 끝까지 도전합니다.
                 </p>
               </div>
             </div>
@@ -129,8 +126,7 @@ const AboutMe = () => {
                   타인의 말에 잘 공감하고 이야기를 듣는 것을 좋아하며, 허투로
                   듣지 않고 경청하여 상대방을 이해하려고 합니다.
                   <br />
-                  나와 의견이 달라 논쟁이 있더라도 타인과 최대한 합의점을 찾아
-                  이야기하려고 합니다.
+                  나와 의견이 달라 논쟁이 있더라도 타인과 최대한 합의점을 찾아 이야기하려고 합니다.
                 </p>
               </div>
             </div>
@@ -140,8 +136,7 @@ const AboutMe = () => {
               <div className="keyword-content">
                 <h3>Positive Attitude</h3>
                 <p>
-                  긍정적이고 열정적인 모습이 저의 강점이자 저를 표현하기 좋은
-                  것 같습니다.
+                  긍정적이고 열정적인 모습이 저의 강점이자 저를 표현하기 좋은 것 같습니다.
                   <br />
                   어떤 문제나 상황에서도 긍정적으로 해결책을 찾기 위해 노력합니다.
                 </p>
