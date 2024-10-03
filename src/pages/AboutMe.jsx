@@ -28,9 +28,11 @@ const AboutMe = () => {
     const options = {
       root: null,
       rootMargin: "0px",
-      threshold: 0.1,
+      threshold: 0.1, //뷰포트 10%로 들어올 떄 진행
     };
 
+    // 배열의 각 인덱스에 특정 섹션 요소 저장
+    // 해당 섹션들이 뷰포트에 들어오면 in-view 클래스 추가
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {

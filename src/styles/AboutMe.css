@@ -71,6 +71,7 @@
   transition: all 0.8s ease-in-out;
 }
 
+/* 뷰포트에 들어와 in-view 클래스가 추가된된 css 적용 */
 .about-me-first-section.in-view .about-me-text {
   opacity: 1;
   transform: translateX(0);
