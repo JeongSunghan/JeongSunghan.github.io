@@ -1,94 +1,196 @@
 .home-container {
   display: flex;
+  flex-direction: row;
   height: 100vh;
   overflow: hidden;
-  transition: all 0.5s ease;
 }
 
 /* 좌측 섹션 (이미지 및 텍스트) */
-.left-section {
-  flex: 1;
+.home-left-section {
+  flex: 0.4; /* 왼쪽 섹션 너비를 40%로 설정 */
   position: relative;
 }
 
-.image-container {
+.home-image-container {
   position: relative;
   width: 100%;
   height: 100%;
 }
 
-.profile-image {
+.home-profile-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;  
-  transition: 0.5s ease;
-  filter: blur(3px);  
+  object-fit: cover;
+  transition: filter 0.5s ease;
+  filter: brightness(65%);  
 }
 
-.profile-image:hover {  
-  transition: 0.5s ease;
-  filter: blur(0px);    
+.home-profile-image:hover {
+  filter: brightness(100%);
 }
 
-/* 텍스트 오버레이 수정 */
-.text-overlay {
+.home-text-overlay {
   position: absolute;
-  top: 10%;
-  left: 10%;
-  color: black;
-  text-align: left;
-  z-index: 10; /* 이미지 위로 올라오도록 z-index 추가 */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  text-align: center;
 }
 
-.text-overlay h1 {
-  font-size: 4rem;
-  margin: 0;
-}
-
-.text-overlay h2 {
+.home-text-overlay h1 {
   font-size: 3rem;
-  margin: 0.15rem 0;
+  margin: 0;
+  animation: home-fadeInDown 1s ease forwards;
+  opacity: 0;
 }
 
-.text-overlay p {
+.home-text-overlay h2 {
+  font-size: 2.5rem;
+  margin: 0.5rem 0;
+  animation: home-fadeInDown 1s ease forwards;
+  animation-delay: 0.5s;
+  opacity: 0;
+}
+
+.home-text-overlay p {
   font-size: 1.5rem;
-  margin: 35rem 0 0 0rem;
-  position: absolute;  
+  margin-top: 1rem;
+  animation: home-fadeInDown 1s ease forwards;
+  animation-delay: 1s;
+  opacity: 0;
 }
 
-/* 우측 섹션 (about me 및 프로젝트 정보) */
-.right-section {
-  flex: 2.65; 
+/* 우측 섹션 */
+.home-right-section {
+  flex: 0.6; /* 오른쪽 섹션 너비를 60%로 설정 */
   display: flex;
   flex-direction: column;
-  font-size: xx-large;
 }
 
-/* 호버 효과 수정 */
-.home-about-me-section,
-.home-projects-section {
+.home-section {
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: flex-grow 0.5s ease;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: flex-grow 0.5s ease;
+}
+
+.home-section h2 {
+  font-size: 2.5rem;
+  color: #fff;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.home-section::before {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotate(45deg);
+  transition: opacity 0.5s ease;
+  opacity: 0;
+}
+
+.home-section:hover::before {
+  opacity: 0.2;
+}
+
+.home-section:hover h2 {
+  transform: scale(1.1);
 }
 
 .home-about-me-section {
-  background-color: #d3d3d3;
-  flex: 1;
+  background-color: #555555; 
 }
 
 .home-projects-section {
-  background-color: #333;
-  color: #fff;
-  flex: 1;
+  background-color: #333333; 
 }
 
-.home-about-me-section:hover {
-  flex-grow: 1.5; /* 호버 시 확장 */
-}
-
+/* 호버 시 섹션 확장 */
+.home-about-me-section:hover,
 .home-projects-section:hover {
-  flex-grow: 1.5; /* 호버 시 확장 */
+  flex-grow: 1.1;
+}
+
+/* 애니메이션 정의 */
+@keyframes home-fadeInDown {
+  to {
+    opacity: 1;
+    transform: translate(-50%, -40%);
+  }
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1024px) {
+  .home-container {
+    flex-direction: column;
+  }
+
+  .home-left-section,
+  .home-right-section {
+    flex: none;
+    width: 100%;
+    height: 50vh;
+  }
+
+  .home-section {
+    flex: 1;
+  }
+
+  .home-text-overlay h1 {
+    font-size: 2.5rem;
+  }
+
+  .home-text-overlay h2 {
+    font-size: 2rem;
+  }
+
+  .home-text-overlay p {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-text-overlay h1 {
+    font-size: 2rem;
+  }
+
+  .home-text-overlay h2 {
+    font-size: 1.5rem;
+  }
+
+  .home-text-overlay p {
+    font-size: 1rem;
+  }
+
+  .home-section h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-text-overlay h1 {
+    font-size: 1.5rem;
+  }
+
+  .home-text-overlay h2 {
+    font-size: 1.2rem;
+  }
+
+  .home-text-overlay p {
+    font-size: 0.9rem;
+  }
+
+  .home-section h2 {
+    font-size: 1.5rem;
+  }
 }

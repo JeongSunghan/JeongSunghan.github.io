@@ -1,23 +1,22 @@
 .footer-container {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
   background-color: #111111;
-  color: #fff;   
-  height: 15vh;       
+  color: #fff;
+  padding: 2rem;
+  width: 100%; 
+  box-sizing: border-box;
 }
 
 .footer-nav {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
-  padding: 0 50px;  
+  justify-content: space-between; 
+  align-items: center;
+  width: 100%; 
 }
 
 .footer-link {
   color: #fff;
   text-decoration: none;
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: bold;
 }
 
@@ -26,42 +25,38 @@
 }
 
 .arrow {
-  font-size: 24px;
+  font-size: 1.5rem;
 }
 
 .footer-info {
   display: flex;
-  justify-content: space-between;
-  padding: 0 50px;
-  margin-top: 20px;  
+  justify-content: space-between; 
+  align-items: center;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .footer-text {
+  font-size: 1rem;  
   text-align: left;
 }
 
+.footer-text p {
+  margin: 0.5rem 0;
+}
+
 .footer-social {
-  text-align: right;
+  flex: 1; /* 남은 공간을 차지하도록 */
+  text-align: right; /* 오른쪽 정렬 */
 }
 
 .footer-social a {
   color: #fff;
-  font-size: 24px;
-  margin: 0 10px;
+  font-size: 2rem;
+  margin-left: 1rem;
 }
 
 .footer-social a:hover {
   color: #ddd;
-}
-
-.footer-bottom {
-  padding-top: 20px;
-  border-top: 1px solid #3d3d3d;
-  text-align: center;
-  margin-top: 20px;
-}
-
-.footer-bottom p {
-  color: #fff;
-  font-size: 14px;
 }

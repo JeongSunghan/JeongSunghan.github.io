@@ -1,0 +1,102 @@
+.project-card {
+  position: absolute;
+  width: 500px;
+  height: 435px;
+  background-color: #474747;
+  padding: 15px;
+  border-radius: 8px;
+  transition: transform 0.5s ease, opacity 0.5s ease; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.project-card:hover {
+  transform: scale(1.05) translateZ(0);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.project-info h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.project-info p {
+  font-size: 1rem;
+}
+
+.project-thumbnail img {
+  width: 75%;
+  height: 200px;
+  object-fit: fill; 
+  border-radius: 10px;
+  margin: 20px auto 0; 
+}
+
+.button-container {
+  text-align: center;
+}
+
+.view-code-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #1f1f1f;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: width 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  width: 30%;
+  text-align: center;
+  display: inline-block;
+  overflow: hidden; 
+}
+
+.view-code-button:hover {
+  width: 40%; 
+  background-color: #ffffff;
+  color: #1f1f1f; 
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .project-card {
+    width: 300px;
+    height: 350px;
+  }
+
+  .project-thumbnail img {
+    height: 150px;
+  }
+
+  .view-code-button {
+    width: 40%;
+    font-size: 0.9rem;
+  }
+
+  .view-code-button:hover {
+    width: 50%;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-card {
+    width: 250px;
+    height: 350px;
+  }
+
+  .project-thumbnail img {
+    height: 120px;
+  }
+
+  .view-code-button {
+    width: 50%;
+    font-size: 0.8rem;
+  }
+
+  .view-code-button:hover {
+    width: 60%;
+  }
+}

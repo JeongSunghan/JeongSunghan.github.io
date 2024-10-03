@@ -1,11 +1,28 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../styles/AboutMe.css";
+
+// 아이콘
+import { FaHtml5, FaCss3Alt, FaJsSquare, FaReact, FaJava, FaGithub,} from "react-icons/fa";
+import { SiSpringboot, SiMysql, SiJira } from "react-icons/si";
 
 import Footer from "../components/Footer";
 import aboutMeImage from "../assets/image/about-me-home2.jpg";
+import myBlurredImage from "../assets/image/about-me-home3.jpg";
 
 const AboutMe = () => {
   const sectionRefs = useRef([]);
+  const [isOriginalText, setIsOriginalText] = useState(true);
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  const handleAboutMeClick = () => {
+    if (isAnimating) return; // 애니메이션 중복 실행 방지
+    setIsAnimating(true);
+
+    setTimeout(() => {
+      setIsOriginalText(!isOriginalText);
+      setIsAnimating(false);
+    }, 500);
+  };
 
   useEffect(() => {
     const options = {
@@ -33,11 +50,11 @@ const AboutMe = () => {
         if (section) observer.unobserve(section);
       });
     };
-  }, []);
+  }, []); 
 
   return (
     <div className="about-me-container">
-      {/* 첫번째 스크롤 섹션 */}
+      {/* 첫 번째 섹션 */}
       <section
         ref={(el) => (sectionRefs.current[0] = el)}
         className="about-me-section about-me-first-section"
@@ -45,11 +62,34 @@ const AboutMe = () => {
         <div className="about-me-content">
           <div className="about-me-text">
             <blockquote>
-              밥도 골고루 먹듯이
+              "밥도 골고루 잘 먹어야 하듯
               <br />
-              개발도 골고루 하자
+              개발도 골고루 잘하자"
             </blockquote>
-            <p>______ About me</p>
+            <p
+              onClick={handleAboutMeClick}
+              className={isAnimating ? "hidden" : ""}
+              role="button"
+              aria-pressed={!isOriginalText}
+            >
+              {isOriginalText ? (
+                ": Click me!"
+              ) : (
+                <>
+                  안녕하세요, 저는 도전적인 개발자 정성한입니다.
+                  <br />
+                  군 복무를 하면서 개발에 관심을 가지게 되었고,
+                  <br />
+                  천천히 개발 교육을 들으며 개발을 시작하게 되었습니다.
+                  <br />
+                  늦게 시작했지만 누구보다 개발에 열정적이고 싶으며,
+                  <br />
+                  다양한 분야에서 개발할 수 있는
+                  <br />
+                  팀에게 항상 도움이 되는 멋진 개발자가 되고 싶습니다.
+                </>
+              )}
+            </p>
           </div>
           <div className="about-me-image">
             <img src={aboutMeImage} alt="About Me" />
@@ -57,59 +97,135 @@ const AboutMe = () => {
         </div>
       </section>
 
-      {/* 두번째 스크롤 섹션 */}
+      {/* 두 번째 섹션 */}
       <section
         ref={(el) => (sectionRefs.current[1] = el)}
         className="about-me-section about-me-second-section"
       >
-        <div className="about-me-introduction-content">
-          <h2>나를 소개합니다</h2>
-         
-          <h3>운동에 대한 열정</h3>
-          <p>
-            복잡한 생각이 많을 때 운동을 통해 마음을 정리하고, 머리를 맑게 합니다.
-            또한, 새로운 도전과 목표 설정을 통해 지속적으로 성장할 수 있는 동기를 부여받습니다.
-          </p>
+        <div className="keyword-content-wrapper">
+          <div className="keyword-left">
+            <h1>My Keywords</h1>
+            <p>: "These three words represent who I am."</p>
+          </div>
+          <div className="keyword-right">
+            <div className="keyword-item">
+              <div className="keyword-number">01</div>
+              <div className="keyword-content">
+                <h3>Challenging & Persevering</h3>
+                <p>
+                  도전하는 것을 정말 좋아합니다.
+                  <br />
+                  새로운 무언가가 있다면 도전하고자 하며, 어려움이 닥쳐도 목표를
+                  이룰 때까지 끈기 있게 끝까지 도전합니다.
+                </p>
+              </div>
+            </div>
 
-          <h3>추구하는 목표</h3>
-          <p>
-            개발에 더 익숙해지고 성장함으로써, 과거에 진행했던 프로젝트를 리팩토링하고 싶습니다.
-            초기에는 기능이 미흡했지만, 지속적인 학습과 노력을 통해 더 완성도 높은 웹 애플리케이션을
-            만들고자 합니다.
-          </p>
+            <div className="keyword-item">
+              <div className="keyword-number">02</div>
+              <div className="keyword-content">
+                <h3>Empathy and Care</h3>
+                <p>
+                  타인의 말에 잘 공감하고 이야기를 듣는 것을 좋아하며, 허투로
+                  듣지 않고 경청하여 상대방을 이해하려고 합니다.
+                  <br />
+                  나와 의견이 달라 논쟁이 있더라도 타인과 최대한 합의점을 찾아
+                  이야기하려고 합니다.
+                </p>
+              </div>
+            </div>
 
-          <h3>나의 강점</h3>
-          <p>
-            항상 밝고 긍정적인 성격으로 사람들과의 소통을 즐깁니다. 한 번 설정한 목표는 완벽을 기할 때까지
-            지속적으로 도전합니다.
-          </p>
-
-          <h3>실수와 극복</h3>
-          <p>
-            새로운 것을 시도할 때 가끔 실수를 하지만, 이를 극복하기 위해 꾸준히 학습하고 문제를 해결해 나갑니다.
-            이러한 경험을 통해 지속적으로 성장하고자 합니다.
-          </p>
+            <div className="keyword-item">
+              <div className="keyword-number">03</div>
+              <div className="keyword-content">
+                <h3>Positive Attitude</h3>
+                <p>
+                  긍정적이고 열정적인 모습이 저의 강점이자 저를 표현하기 좋은
+                  것 같습니다.
+                  <br />
+                  어떤 문제나 상황에서도 긍정적으로 해결책을 찾기 위해 노력합니다.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="keyword-image">
+            <img src={myBlurredImage} alt="Blurred Background" />
+          </div>
         </div>
       </section>
 
-      {/* 세번째 스크롤 섹션 */}
+      {/* 세 번째 섹션 */}
       <section
         ref={(el) => (sectionRefs.current[2] = el)}
         className="about-me-section about-me-third-section"
       >
-        <div className="about-me-strengths-content">
-          <h2>나의 장점과 취미</h2>
-          <p>장점: 문제 해결 능력, 빠른 학습 속도, 협업 능력</p>
-          <p>취미: 음악 감상, 코딩, 여행</p>
+        <div className="about-me-skills-content">
+          <h2>MY SKILLS</h2>
+          <div className="skills-category">
+            <h3>Front-End</h3>
+            <ul className="skills-list">
+              <li>
+                <FaHtml5 className="skill-icon" />
+                <span>HTML</span>
+              </li>
+              <li>
+                <FaCss3Alt className="skill-icon" />
+                <span>CSS</span>
+              </li>
+              <li>
+                <FaJsSquare className="skill-icon" />
+                <span>JavaScript</span>
+              </li>
+              <li>
+                <FaReact className="skill-icon" />
+                <span>React</span>
+              </li>
+            </ul>
+          </div>
+          <div className="skills-category">
+            <h3>Back-End</h3>
+            <ul className="skills-list">
+              <li>
+                <FaJava className="skill-icon" />
+                <span>Java</span>
+              </li>
+              <li>
+                <SiSpringboot className="skill-icon" />
+                <span>Spring Boot</span>
+              </li>
+            </ul>
+          </div>
+          <div className="skills-category">
+            <h3>Database</h3>
+            <ul className="skills-list">
+              <li>
+                <SiMysql className="skill-icon" />
+                <span>MySQL</span>
+              </li>
+            </ul>
+          </div>
+          <div className="skills-category">
+            <h3>Other</h3>
+            <ul className="skills-list">
+              <li>
+                <SiJira className="skill-icon" />
+                <span>Jira</span>
+              </li>
+              <li>
+                <FaGithub className="skill-icon" />
+                <span>GitHub</span>
+              </li>
+            </ul>
+          </div>
         </div>
       </section>
 
-      {/* 네번째 스크롤 섹션 */}
-      <Footer />
+      {/* 네 번째 섹션 */}
       <section
         ref={(el) => (sectionRefs.current[3] = el)}
         className="about-me-section about-me-footer-section"
       >
+        <Footer />
       </section>
     </div>
   );

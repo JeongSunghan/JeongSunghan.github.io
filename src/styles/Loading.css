@@ -1,5 +1,5 @@
 .loading-container {
-  position: fixed; 
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -7,22 +7,22 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: transparent;   
-  z-index: 9999; /* 다른 콘텐츠 위에 나타나도록 z-index 설정 */
+  background-color: #2c2c2c; 
+  z-index: 9999;
 }
 
 .loading-text {
   display: flex;
-  font-size: 3rem;
+  font-size: 3.5rem; 
   font-weight: bold;
   letter-spacing: 0.5rem;
-  color: #000; 
+  color: #fff; 
 }
 
 .loading-letter {
   display: inline-block;
   opacity: 0;
-  animation: bounce 1.25s infinite ease-in-out;
+  animation: bounce 1.25s infinite ease-in-out, scaleUp 1.25s infinite ease-in-out;
 }
 
 .loading-letter:nth-child(1) {
@@ -63,5 +63,17 @@
   100% {
     opacity: 0;
     transform: translateY(0);
+  }
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2); 
+  }
+  100% {
+    transform: scale(1);
   }
 }
