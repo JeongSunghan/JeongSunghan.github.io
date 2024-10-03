@@ -58,6 +58,9 @@
 3. GitHub Pages 배포 가이드 <br/>
 4. Intersection Observer API <br/>
 
+## 개선 사항
+1. 모바일에서의 반응형 조금 더 완벽하게 만들기
+
 ## 👨‍💻 개발자
 Jeong Sunghan<br/>
 GitHub: Jeong Sunghan<br/>
