@@ -61,6 +61,31 @@
 }
 
 /* 반응형 디자인 */
+
+/* 1024px 이하 */
+@media (max-width: 1024px) {
+  .project-card {
+    width: auto;
+    height: auto;
+  }
+
+  .projects-title {
+    font-size: 1.5rem;
+  }
+
+  .project-thumbnail img {
+    height: auto;
+    width: 110px;
+  }
+
+  .view-code-button {
+    width: 40%;
+    font-size: 0.75rem;
+  }
+}
+
+  
+
 @media (max-width: 768px) {
   .project-card {
     width: 300px;

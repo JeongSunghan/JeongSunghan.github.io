@@ -7,7 +7,7 @@ import { SiSpringboot, SiMysql, SiJira } from "react-icons/si";
 
 import Footer from "../components/Footer";
 import aboutMeImage from "../assets/image/about-me-home2.jpg";
-import myBlurredImage from "../assets/image/about-me-home3.jpg";
+import myBlurredImage from "../assets/image/contactProfile2.png";
 
 const AboutMe = () => {
   const sectionRefs = useRef([]);
