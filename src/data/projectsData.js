@@ -1,4 +1,5 @@
 import "../assets/image/project1.png";
+// 추후 더 제작하는 프로젝트 나중에 추가 하기
 
 const projectsData = [
   {
@@ -39,8 +40,14 @@ const projectsData = [
     img: require("../assets/image/project6.png"),
     link: "https://github.com/JeongSunghan/JeongSunghan.github.io",
   },
-];
 
-// 몇몇 프로젝트 나중에 추가 하기
+  {
+    id: 5,
+    title: "PortFolio - Toy",
+    description: "리액트를 활용한 뮤직 플레이어입니다. (개발 중)",
+    img: require("../assets/image/project4.png"),
+    link: "https://github.com/JeongSunghan/react-music-player",
+  },
+];
 
 export default projectsData;
