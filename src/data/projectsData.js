@@ -43,7 +43,7 @@ const projectsData = [
 
   {
     id: 5,
-    title: "PortFolio - Toy",
+    title: "ReactPlayer - Toy",
     description: "리액트를 활용한 뮤직 플레이어입니다. (개발 중)",
     img: require("../assets/image/project4.png"),
     link: "https://github.com/JeongSunghan/react-music-player",
