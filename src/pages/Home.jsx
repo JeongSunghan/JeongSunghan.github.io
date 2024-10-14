@@ -34,7 +34,7 @@ const Home = () => {
               <div className="home-text-overlay">
                 <h1>반갑습니다!</h1>
                 <h2>JEONG SUNGHAN</h2>
-                <p>JUNIOR Web Developer 입니다</p>
+                <p>JUNIOR Developer 입니다</p>
               </div>
             </div>
           </div>
