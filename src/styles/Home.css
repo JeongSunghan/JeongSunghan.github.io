@@ -1,3 +1,4 @@
+/* 전체 레이아웃 설정 */
 .home-container {
   display: flex;
   flex-direction: row;
@@ -7,28 +8,27 @@
 
 /* 좌측 섹션 (이미지 및 텍스트) */
 .home-left-section {
-  flex: 0.4; /* 왼쪽 섹션 너비를 40%로 설정 */
+  flex: 0.4;
   position: relative;
 }
 
-.home-image-container {
-  position: relative;
+.home-image-container,
+.home-profile-image {
   width: 100%;
   height: 100%;
 }
 
 .home-profile-image {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
   transition: filter 0.5s ease;
-  filter: brightness(65%);  
+  filter: brightness(65%);
 }
 
 .home-profile-image:hover {
   filter: brightness(80%);
 }
 
+/* 텍스트 오버레이 설정 */
 .home-text-overlay {
   position: absolute;
   top: 50%;
@@ -38,32 +38,31 @@
   text-align: center;
 }
 
+.home-text-overlay h1,
+.home-text-overlay h2,
+.home-text-overlay p {
+  margin: 0;
+  opacity: 0;
+  animation: home-fadeInDown 1s ease forwards;
+}
+
 .home-text-overlay h1 {
   font-size: 3rem;
-  margin: 0;
-  animation: home-fadeInDown 1s ease forwards;
-  opacity: 0;
 }
 
 .home-text-overlay h2 {
   font-size: 2.5rem;
-  margin: 0.5rem 0;
-  animation: home-fadeInDown 1s ease forwards;
   animation-delay: 0.5s;
-  opacity: 0;
 }
 
 .home-text-overlay p {
   font-size: 1.5rem;
-  margin-top: 1rem;
-  animation: home-fadeInDown 1s ease forwards;
   animation-delay: 1s;
-  opacity: 0;
 }
 
 /* 우측 섹션 */
 .home-right-section {
-  flex: 0.6; /* 오른쪽 섹션 너비를 60%로 설정 */
+  flex: 0.6;
   display: flex;
   flex-direction: column;
 }
@@ -76,7 +75,7 @@
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  transition: flex-grow 0.5s ease;
+  transition: flex-grow 0.5s ease, background-color 0.3s ease;
 }
 
 .home-section h2 {
@@ -108,20 +107,20 @@
 }
 
 .home-about-me-section {
-  background-color: #555555; 
+  background-color: #555;
 }
 
 .home-projects-section {
-  background-color: #333333; 
+  background-color: #333;
 }
 
-/* 호버 시 섹션 확장 */
+/* 섹션 확장 효과 */
 .home-about-me-section:hover,
 .home-projects-section:hover {
   flex-grow: 1.1;
 }
 
-/* 애니메이션 정의 */
+/* 애니메이션 */
 @keyframes home-fadeInDown {
   to {
     opacity: 1;
@@ -140,10 +139,6 @@
     flex: none;
     width: 100%;
     height: 50vh;
-  }
-
-  .home-section {
-    flex: 1;
   }
 
   .home-text-overlay h1 {

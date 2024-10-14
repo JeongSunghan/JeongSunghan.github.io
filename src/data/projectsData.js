@@ -20,7 +20,7 @@ const projectsData = [
   {
     id: 3,
     title: "PortFolio - Toy",
-    description: "리액트를 활용한 저의 첫 포트폴리오 입니다.",
+    description: "React를 활용한 저의 첫 포트폴리오 입니다.",
     img: require("../assets/image/project6.png"),
     link: "https://github.com/JeongSunghan/JeongSunghan.github.io",
   },
@@ -28,7 +28,7 @@ const projectsData = [
   {
     id: 4,
     title: "ReactPlayer - Toy",
-    description: "리액트를 활용한 뮤직 플레이어입니다. (개발 중)",
+    description: "React / YouTube API 활용한 뮤직 플레이어입니다. ",
     img: require("../assets/image/project4.png"),
     link: "https://github.com/JeongSunghan/react-music-player",
   },
