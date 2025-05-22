@@ -1,156 +1,304 @@
-/* 전체 레이아웃 설정 */
+/* 전체 레이아웃 설정 - 현대적인 그리드 시스템 적용 */
 .home-container {
   display: flex;
-  flex-direction: row;
-  height: 100vh;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0c0c0c, #1a1a1a);
+  color: #ffffff;
   overflow: hidden;
 }
 
-/* 좌측 섹션 (이미지 및 텍스트) */
+/* 좌측 섹션 (이미지 및 텍스트) - 깊이감 추가 */
 .home-left-section {
-  flex: 0.4;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
   position: relative;
 }
 
-.home-image-container,
+.home-image-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
 .home-profile-image {
   width: 100%;
-  height: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
 }
 
-.home-profile-image {
-  object-fit: cover;
-  transition: filter 0.5s ease;
-  filter: brightness(65%);
-}
-
-.home-profile-image:hover {
-  filter: brightness(80%);
-}
-
-/* 텍스트 오버레이 설정 */
+/* 현대적인 텍스트 오버레이 설정 */
 .home-text-overlay {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #fff;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.8)
+  );
+  padding: 2rem;
   text-align: center;
-}
-
-.home-text-overlay h1,
-.home-text-overlay h2,
-.home-text-overlay p {
-  margin: 0;
-  opacity: 0;
-  animation: home-fadeInDown 1s ease forwards;
 }
 
 .home-text-overlay h1 {
   font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(45deg, #00ffa7, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .home-text-overlay h2 {
   font-size: 2.5rem;
-  animation-delay: 0.5s;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
 }
 
 .home-text-overlay p {
-  font-size: 1.5rem;
-  animation-delay: 1s;
+  font-size: 1.2rem;
+  color: #cccccc;
 }
 
-/* 우측 섹션 */
+/* 배경 오버레이 효과 */
+.home-left-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.4) 50%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  z-index: 1;
+}
+
+/* 우측 섹션 - 모던한 상호작용 추가 */
 .home-right-section {
-  flex: 0.6;
+  flex: 1;
   display: flex;
   flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
 }
 
 .home-section {
   flex: 1;
   display: flex;
-  justify-content: center;
   align-items: center;
-  cursor: pointer;
-  position: relative;
+  justify-content: center;
+  border-radius: 30px;
   overflow: hidden;
-  transition: flex-grow 0.5s ease, background-color 0.3s ease;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.home-about-me-section {
+  background: linear-gradient(45deg, #1a1a1a, #2d2d2d);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.home-projects-section {
+  background: linear-gradient(45deg, #2d2d2d, #1a1a1a);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.section-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(0, 255, 167, 0.1), rgba(124, 58, 237, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.home-section:hover .section-overlay {
+  opacity: 1;
 }
 
 .home-section h2 {
-  font-size: 2.5rem;
-  color: #fff;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #ffffff;
+  position: relative;
   z-index: 1;
-  transition: transform 0.3s ease;
 }
 
+/* 세련된 hover 효과 */
 .home-section::before {
   content: '';
   position: absolute;
-  top: -100%;
-  left: -100%;
-  width: 300%;
-  height: 300%;
-  background: rgba(255, 255, 255, 0.1);
-  transform: rotate(45deg);
-  transition: opacity 0.5s ease;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 70%
+  );
+  transform-origin: center;
+  transform: scale(0);
+  transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1);
   opacity: 0;
 }
 
 .home-section:hover::before {
-  opacity: 0.2;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.home-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.home-section:hover::after {
+  opacity: 1;
+}
+
+.home-section h2::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 0;
+  height: 3px;
+  transition: width 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .home-section:hover h2 {
-  transform: scale(1.1);
+  transform: translateY(-5px);
+  text-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
+.home-section:hover h2::after {
+  width: 100%;
+}
+
+/* 섹션별 스타일링 */
 .home-about-me-section {
-  background-color: #555;
+  background-color: #151515;
+}
+
+.home-about-me-section h2::after {
+  background: linear-gradient(90deg, #64ffda, #00b8d4);
 }
 
 .home-projects-section {
-  background-color: #333;
+  background-color: #101010;
 }
 
-/* 섹션 확장 효과 */
+.home-projects-section h2::after {
+  background: linear-gradient(90deg, #ff4081, #7c4dff);
+}
+
+/* 섹션 확장 효과 개선 */
 .home-about-me-section:hover,
 .home-projects-section:hover {
-  flex-grow: 1.1;
+  flex-grow: 1.2;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
-/* 애니메이션 */
-@keyframes home-fadeInDown {
+.home-about-me-section:hover {
+  background-color: #1a1a1a;
+}
+
+.home-projects-section:hover {
+  background-color: #141414;
+}
+
+/* 세련된 애니메이션 */
+@keyframes home-slideInUp {
   to {
     opacity: 1;
-    transform: translate(-50%, -40%);
+    transform: translateY(0);
   }
 }
 
-/* 반응형 디자인 */
+/* 현대적인 스크롤바 스타일링 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* 반응형 디자인 개선 */
+@media (max-width: 1200px) {
+  .home-text-overlay h1 {
+    font-size: 3rem;
+  }
+  
+  .home-text-overlay h2 {
+    font-size: 2.2rem;
+  }
+  
+  .home-section h2 {
+    font-size: 2.4rem;
+  }
+}
+
 @media (max-width: 1024px) {
   .home-container {
     flex-direction: column;
   }
-
+  
   .home-left-section,
   .home-right-section {
-    flex: none;
-    width: 100%;
-    height: 50vh;
+    padding: 1rem;
   }
-
+  
+  .home-image-container {
+    max-width: 100%;
+  }
+  
   .home-text-overlay h1 {
     font-size: 2.5rem;
   }
-
+  
   .home-text-overlay h2 {
     font-size: 2rem;
-  }
-
-  .home-text-overlay p {
-    font-size: 1.2rem;
   }
 }
 
@@ -158,34 +306,54 @@
   .home-text-overlay h1 {
     font-size: 2rem;
   }
-
+  
   .home-text-overlay h2 {
     font-size: 1.5rem;
   }
-
+  
   .home-text-overlay p {
     font-size: 1rem;
   }
-
+  
   .home-section h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 }
 
 @media (max-width: 480px) {
   .home-text-overlay h1 {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
-
+  
   .home-text-overlay h2 {
-    font-size: 1.2rem;
-  }
-
-  .home-text-overlay p {
-    font-size: 0.9rem;
-  }
-
-  .home-section h2 {
     font-size: 1.5rem;
+  }
+  
+  .home-text-overlay p {
+    font-size: 1rem;
+  }
+  
+  .home-section h2 {
+    font-size: 1.8rem;
+  }
+}
+
+/* 모션 감소 설정 - 접근성 고려 */
+@media (prefers-reduced-motion: reduce) {
+  .home-text-overlay h1,
+  .home-text-overlay h2,
+  .home-text-overlay p {
+    animation: none;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .home-profile-image,
+  .home-section,
+  .home-section h2,
+  .home-section::before,
+  .home-section::after,
+  .home-section h2::after {
+    transition: none;
   }
 }

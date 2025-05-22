@@ -1,168 +1,268 @@
-/* 좌우 화살표 버튼 */
-.project-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(255, 255, 255, 0.2); 
-  border: 2px solid #fff; 
-  padding: 15px; 
-  font-size: 2rem; 
-  cursor: pointer;
-  z-index: 10; 
-  border-radius: 50%; 
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
-  transition: all 0.3s ease; 
-  color: #fff; 
-}
-
-.left-arrow {
-  left: 20px;
-}
-
-.right-arrow {
-  right: 20px;
-}
-
-.project-arrow:hover {
-  background-color: rgba(255, 255, 255, 0.5); 
-  transform: translateY(-50%) scale(1.1); 
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); 
-} 
-
-.project-arrow:active {
-  transform: translateY(-50%) scale(0.9); 
-}
-
-
-
-
-/* 프로젝트 페이지 */
 .projects-page {
-  background-color: #000000;
-  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 30px 30px;
-  text-align: center;
-  color: #fff;
-  min-height: 100vh; 
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; 
-  overflow: hidden; 
+  min-height: 100vh;
+  padding: 3rem 1rem 0 1rem;
+  background: linear-gradient(135deg, #202127 0%, #23232b 100%);
+  color: #ffffff;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .projects-title {
-  font-size: 3rem;
-  margin: 2rem 0;
+  font-size: 2.3rem;
+  font-weight: 800;
+  margin-bottom: 1.2rem;
+  text-align: center;
+  color: #e5e7eb;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #e5e7eb 0%, #bdbdbd 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.projects-description {
+  font-size: 1.08rem;
+  color: #bdbdbd;
+  margin-bottom: 2.2rem;
+  text-align: center;
+  max-width: 600px;
+  line-height: 1.6;
+  opacity: 0.92;
 }
 
 .projects-container {
   position: relative;
+  width: 100%;
+  max-width: 1200px;
+  height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(36, 38, 46, 0.92);
+  box-shadow: 0 2px 12px 0 rgba(31, 38, 135, 0.08);
+  backdrop-filter: blur(8px) saturate(110%);
+  -webkit-backdrop-filter: blur(8px) saturate(110%);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.07);
+  margin-bottom: 1.5rem;
+}
+
+/* 카드 컨테이너가 페이지 스크롤을 방해하지 않도록 설정 */
+.projects-container:focus {
+  outline: none;
+}
+
+.project-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(36, 38, 46, 0.92);
+  border: 1px solid rgba(255,255,255,0.07);
+  cursor: pointer;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #bdbdbd;
+  transition: all 0.3s ease;
+  opacity: 0;
+  backdrop-filter: blur(8px);
+}
+
+.project-arrow:hover {
+  background: rgba(255,255,255,0.1);
+  color: #e5e7eb;
+  transform: translateY(-50%) scale(1.06);
+}
+
+.project-arrow.visible {
+  opacity: 1;
+}
+
+.left-arrow {
+  left: 2.5%;
+}
+
+.right-arrow {
+  right: 2.5%;
+}
+
+.project-indicators {
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex: 1; 
-  width: 100%;
-  perspective: 1000px; /* 3D 효과를 위한 원근법 */
-  overflow: hidden;
+  margin: 1.2rem 0 0.2rem 0;
+  gap: 0.5rem;
 }
 
-/* Footer 섹션 스타일 */
+.indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.07);
+  opacity: 0.7;
+}
+
+.indicator.active {
+  background: rgba(255,255,255,0.2);
+  transform: scale(1.18);
+  opacity: 1;
+}
+
+.current-project-info {
+  text-align: center;
+  margin: 1.2rem 0 0.2rem 0;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+.project-tech-stack {
+  font-size: 0.97rem;
+  color: #e5e7eb;
+  font-style: italic;
+  background: rgba(36, 38, 46, 0.92);
+  padding: 0.4rem 1.1rem;
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
+  letter-spacing: 0.01em;
+  opacity: 0.85;
+  border: 1px solid rgba(255,255,255,0.07);
+}
+
 .projects-footer-section {
+  margin-top: auto;
   width: 100%;
-  height: 25vh;
-  scroll-snap-align: start;
-  background-color: #111111;  
-  align-items: flex-start;
+  padding-top: 4rem;
 }
 
-/* 반응형 디자인 */
-
-/* 1440px 이하 */
-@media (max-width: 1440px) {
-  .projects-title {
-    font-size: 2.8rem;
-  }
-
-  .projects-grid {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  }
-}
-
-/* 1024px 이하 */
-@media (max-width: 1024px) {
+/* Responsive Design */
+@media screen and (max-width: 1200px) {
   .projects-container {
-    max-height: 35%;
-    max-width: 85%; 
+    height: 370px;
   }
-
+  
   .projects-title {
-    font-size: 2.5rem;
-  }
-
-  .projects-footer-section {
-    height: 26vh;
-    padding: 15px 0;
+    font-size: 2rem;
   }
 }
 
+@media screen and (max-width: 992px) {
+  .projects-container {
+    height: 320px;
+  }
+  
+  .project-arrow {
+    width: 30px;
+    height: 30px;
+  }
+}
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
+  .projects-page {
+    padding: 1.2rem 0.2rem 0 0.2rem;
+  }
+  
+  .projects-title {
+    font-size: 1.3rem;
+  }
+  
+  .projects-container {
+    height: 220px;
+    border-radius: 10px;
+  }
+  
+  .project-arrow {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .projects-page {
+    padding: 2rem 0.5rem;
+  }
+  
+  .projects-title {
+    font-size: 2rem;
+  }
+  
+  .projects-description {
+    font-size: 1rem;
+  }
+  
   .projects-container {
     height: 400px;
   }
-
+  
   .project-arrow {
-    font-size: 1.5rem; 
-    padding: 10px; 
-  }
-
-  .project-thumbnail img {
-    height: 150px;
-  }
-
-  .view-code-button {
-    width: 40%;
-    font-size: 0.9rem;
-  }
-
-  .view-code-button:hover {
-    width: 50%;
-  }
-
-  .projects-title {
-    font-size: 2.5rem;
-    margin: 2rem 0;
+    width: 40px;
+    height: 40px;
   }
 }
 
-@media (max-width: 480px) {
-  .projects-container {
-    height: 300px;
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .projects-page {
+    background: linear-gradient(145deg, #1a1a1a, #222);
   }
-
-  .project-arrow {
-    font-size: 1.2rem; 
-    padding: 8px; 
-  }
-
-
-  .project-thumbnail img {
-    height: 120px;
-  }
-
-  .view-code-button {
-    width: 50%;
-    font-size: 0.8rem;
-  }
-
-  .view-code-button:hover {
-    width: 60%;
-  }
-
+  
   .projects-title {
-    font-size: 2rem;
-    margin: 1.5rem 0;
+    background: linear-gradient(135deg, #e0e0e0, #bbb);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+  
+  .projects-description {
+    color: #aaa;
+  }
+  
+  .project-arrow {
+    background-color: rgba(40, 40, 40, 0.8);
+    color: #e0e0e0;
+  }
+  
+  .project-arrow:hover {
+    background-color: #333;
+  }
+  
+  .indicator {
+    background-color: #555;
+  }
+  
+  .indicator.active {
+    background-color: #e0e0e0;
+  }
+  
+  .current-project-info h3 {
+    color: #e0e0e0;
+  }
+  
+  .project-tech-stack {
+    color: #bbb;
   }
 }
 
+/* Animation for project cards */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.projects-container > * {
+  animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}

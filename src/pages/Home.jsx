@@ -1,25 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/Home.css";
-import profileImage from "../assets/image/about-me-home.jpg";
+import profileImage from "../assets/image/about-me-home.png";
 import { useNavigate } from "react-router-dom";
 import Loading from "../components/Loading";
+import { motion } from "framer-motion";
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate(); 
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setMousePosition({
+        x: e.clientX,
+        y: e.clientY
+      });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
   const handleAboutMeClick = () => {
     setIsLoading(true);
     setTimeout(() => {
       navigate("/about");
-    }, 1500); // 로딩 시간을 1.5초로 조정
+    }, 1500);
   };
 
   const handleProjectsClick = () => {
     setIsLoading(true);
     setTimeout(() => {
       navigate("/projects");
-    }, 1500); // 로딩 시간을 1.5초로 조정
+    }, 1500);
   };
 
   return (
@@ -28,24 +42,76 @@ const Home = () => {
         <Loading />
       ) : (
         <>
-          <div className="home-left-section">
+          <motion.div 
+            className="home-left-section"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+          >
             <div className="home-image-container">
-              <img src={profileImage} alt="Profile" className="home-profile-image" />
-              <div className="home-text-overlay">
-                <h1>반갑습니다!</h1>
-                <h2>JEONG SUNGHAN</h2>
-                <p>JUNIOR Developer 입니다</p>
+              <motion.img 
+                src={profileImage} 
+                alt="Profile" 
+                className="home-profile-image"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              />
+              <div 
+                className="home-text-overlay"
+                style={{
+                  background: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 50%)`
+                }}
+              >
+                <motion.h1
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                >
+                  반갑습니다!
+                </motion.h1>
+                <motion.h2
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                >
+                  JEONG SUNGHAN
+                </motion.h2>
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 }}
+                >
+                  JUNIOR Developer 입니다
+                </motion.p>
               </div>
             </div>
-          </div>
-          <div className="home-right-section">
-            <div onClick={handleAboutMeClick} className="home-section home-about-me-section">
+          </motion.div>
+
+          <motion.div 
+            className="home-right-section"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <motion.div 
+              className="home-section home-about-me-section"
+              onClick={handleAboutMeClick}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
               <h2>About Me</h2>
-            </div>
-            <div onClick={handleProjectsClick} className="home-section home-projects-section">
+              <div className="section-overlay" />
+            </motion.div>
+            <motion.div 
+              className="home-section home-projects-section"
+              onClick={handleProjectsClick}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
               <h2>Projects</h2>
-            </div>
-          </div>
+              <div className="section-overlay" />
+            </motion.div>
+          </motion.div>
         </>
       )}
     </div>

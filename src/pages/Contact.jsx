@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';  
 import '../styles/Contact.css';  
-import contacimage from '../assets/image/contactProfile.jpg';
+// import contacimage from '../assets/image/contactProfile.jpg';
 
 const Contact = () => {
   const navigate = useNavigate();  
@@ -14,7 +14,7 @@ const Contact = () => {
     <div className="contact-container">
       <div className="contact-image">
         <img 
-          src={contacimage} 
+          // src={contacimage} 
           alt="Profile" 
           onClick={home}  
         />

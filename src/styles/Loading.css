@@ -5,75 +5,164 @@
   width: 100%;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #2c2c2c; 
+  background: linear-gradient(135deg, #0c0c0c, #1a1a1a);
   z-index: 9999;
+  gap: 2rem;
+}
+
+.loading-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(0, 255, 167, 0.1) 0%, transparent 70%);
+  animation: pulse 2s ease-in-out infinite;
 }
 
 .loading-text {
   display: flex;
-  font-size: 3.5rem; 
-  font-weight: bold;
+  font-size: 4rem;
+  font-weight: 800;
   letter-spacing: 0.5rem;
-  color: #fff; 
+  background: linear-gradient(45deg, #00ffa7, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  filter: drop-shadow(0 0 10px rgba(0, 255, 167, 0.3));
+}
+
+.loading-text::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(45deg, #00ffa7, #7c3aed);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: lineGrow 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 5px rgba(0, 255, 167, 0.5));
 }
 
 .loading-letter {
   display: inline-block;
   opacity: 0;
-  animation: bounce 1.25s infinite ease-in-out, scaleUp 1.25s infinite ease-in-out;
+  animation: bounce 1.5s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  text-shadow: 0 0 10px rgba(0, 255, 167, 0.5);
 }
 
-.loading-letter:nth-child(1) {
-  animation-delay: 0s;
+.loading-letter:nth-child(1) { animation-delay: 0s; }
+.loading-letter:nth-child(2) { animation-delay: 0.1s; }
+.loading-letter:nth-child(3) { animation-delay: 0.2s; }
+.loading-letter:nth-child(4) { animation-delay: 0.3s; }
+.loading-letter:nth-child(5) { animation-delay: 0.4s; }
+.loading-letter:nth-child(6) { animation-delay: 0.5s; }
+.loading-letter:nth-child(7) { animation-delay: 0.6s; }
+
+.loading-progress {
+  width: 200px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
 }
-.loading-letter:nth-child(2) {
-  animation-delay: 0.1s;
-}
-.loading-letter:nth-child(3) {
-  animation-delay: 0.2s;
-}
-.loading-letter:nth-child(4) {
-  animation-delay: 0.3s;
-}
-.loading-letter:nth-child(5) {
-  animation-delay: 0.4s;
-}
-.loading-letter:nth-child(6) {
-  animation-delay: 0.5s;
-}
-.loading-letter:nth-child(7) {
-  animation-delay: 0.6s;
+
+.loading-progress::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(45deg, #00ffa7, #7c3aed);
+  transform-origin: left;
+  filter: drop-shadow(0 0 5px rgba(0, 255, 167, 0.5));
 }
 
 @keyframes bounce {
-  0% {
+  0%, 100% {
     opacity: 0;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
   25% {
     opacity: 1;
-    transform: translateY(-20px);
+    transform: translateY(-20px) scale(1.2);
   }
   50% {
     opacity: 1;
-    transform: translateY(0);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
-@keyframes scaleUp {
-  0% {
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.5;
     transform: scale(1);
   }
   50% {
-    transform: scale(1.2); 
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes lineGrow {
+  0% {
+    transform: scaleX(0);
+  }
+  50% {
+    transform: scaleX(1);
   }
   100% {
-    transform: scale(1);
+    transform: scaleX(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .loading-text {
+    font-size: 3rem;
+    letter-spacing: 0.3rem;
+  }
+  
+  .loading-progress {
+    width: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .loading-text {
+    font-size: 2.5rem;
+    letter-spacing: 0.2rem;
+  }
+  
+  .loading-progress {
+    width: 120px;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .loading-container {
+    background: linear-gradient(145deg, #1a1a1a, #222);
+  }
+  
+  .loading-text {
+    background: linear-gradient(135deg, #e0e0e0, #bbb);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+  
+  .loading-progress {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  .loading-progress::after {
+    background: linear-gradient(135deg, #e0e0e0, #bbb);
   }
 }

@@ -3,15 +3,24 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: linear-gradient(135deg, #3a3a3a, #4b4b4b); 
-    background-size: 400% 400%;
-    animation: gradientAnimation 15s ease infinite;
+    background: linear-gradient(135deg, #0c0c0c, #1a1a1a);
     position: relative;
     overflow: hidden;
+    color: #ffffff;
+}
+
+.contact-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(0, 255, 167, 0.1) 0%, transparent 70%);
+    animation: pulse 8s ease-in-out infinite;
 }
 
 /* 배경 파티클 추가 */
-.contact-container::before,
 .contact-container::after {
     content: '';
     position: absolute;
@@ -37,38 +46,40 @@
     text-align: center;
     position: relative;
     z-index: 1;
+    padding: 2rem;
 }
 
 .contact-image img {
-    width: 55%;
-    border-radius: 15px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    transition: transform 0.5s ease;
-    filter: grayscale(75%);
+    width: 60%;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: grayscale(50%) contrast(110%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .contact-image img:hover {
-    transform: scale(1.05) rotate(5deg);
-    filter: grayscale(0);
+    transform: scale(1.05) rotate(2deg);
+    filter: grayscale(0%) contrast(120%);
+    box-shadow: 0 30px 60px rgba(0, 255, 167, 0.2);
 }
 
 /* 상세 정보 섹션 */
 .contact-details {
     flex: 1;
-    color: #e0dfdc; 
-    padding: 20px;
-    text-align: left;
+    padding: 3rem;
     position: relative;
     z-index: 1;
 }
 
 .contact-details h2 {
-    font-size: 3rem;
+    font-size: 3.5rem;
+    font-weight: 800;
     margin: 0;
-    position: relative;
-    display: inline-block;
-    animation: fadeInDown 2s ease forwards;
-    opacity: 0;
+    background: linear-gradient(45deg, #00ffa7, #7c3aed);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: fadeInDown 1s ease forwards;
 }
 
 .contact-details h2::after {
@@ -83,43 +94,50 @@
 }
 
 .contact-details h3 {
-    font-size: 1.8rem;
-    margin-top: 10px;
-    opacity: 0;
-    animation: fadeInUp 2s ease forwards;
-    animation-delay: 0.5s;
+    font-size: 2rem;
+    margin: 1rem 0;
+    color: #ffffff;
+    animation: fadeInUp 1s ease forwards;
+    animation-delay: 0.3s;
 }
 
 .contact-info {
-    margin-top: 20px;
+    margin-top: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .contact-info p {
     display: flex;
     align-items: center;
     font-size: 1.2rem;
-    margin: 10px 0;
-    opacity: 0;
-    transform: translateX(-20px);
-    animation: slideIn 1s ease forwards;
+    margin: 1rem 0;
+    color: #cccccc;
+    transition: all 0.3s ease;
 }
 
-.contact-info p:nth-child(1) {
-    animation-delay: 1s;
-}
-
-.contact-info p:nth-child(2) {
-    animation-delay: 1.5s;
+.contact-info p:hover {
+    color: #ffffff;
+    transform: translateX(10px);
 }
 
 .contact-info .icon {
-    margin-right: 10px;
+    margin-right: 1rem;
     font-size: 1.5rem;
-    color: #b0b0b0; 
+    background: linear-gradient(45deg, #00ffa7, #7c3aed);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 /* 푸터 섹션 */
 .footer {
+    margin-top: 3rem;
+    text-align: center;
+    color: #888888;
+    font-size: 0.9rem;
     margin-top: 30px;
     font-size: 1rem;
     opacity: 0;

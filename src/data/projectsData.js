@@ -18,7 +18,7 @@ const projectsData = [
     link: "https://github.com/JeongSunghan/wordle-game",
   },
   {
-    id: 3,
+    id: 4,
     title: "PortFolio - Toy",
     description: "React를 활용한 저의 첫 포트폴리오 입니다.",
     img: require("../assets/image/project6.png"),
@@ -26,7 +26,7 @@ const projectsData = [
   },
 
   {
-    id: 4,
+    id: 3,
     title: "ReactPlayer - Toy",
     description: "React / YouTube API 활용한 뮤직 플레이어입니다. ",
     img: require("../assets/image/project4.png"),

@@ -1,231 +1,135 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { Suspense, useState, useCallback } from "react";
 import "../styles/AboutMe.css";
+import myPhoto from "../assets/image/MyPhoto.jpg";
 
-// 아이콘
-import { FaHtml5, FaCss3Alt, FaJsSquare, FaReact, FaJava, FaGithub,} from "react-icons/fa";
-import { SiSpringboot, SiMysql, SiJira } from "react-icons/si";
+export default function Portfolio2025() {
+  const [aboutTilt, setAboutTilt] = useState({ transform: "none" });  
 
-import Footer from "../components/Footer";
-import aboutMeImage from "../assets/image/about-me-home2.jpg";
-import myBlurredImage from "../assets/image/contactProfile2.png";
+  /* 마우스 이동에 따른 3D Tilt */
+  const handleTiltMove = useCallback((e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    const x = e.clientX - centerX;
+    const y = e.clientY - centerY;
+    const rotateMax = 15;
 
-const AboutMe = () => {
-  const sectionRefs = useRef([]);
-  const [isOriginalText, setIsOriginalText] = useState(true);
-  const [isAnimating, setIsAnimating] = useState(false);
+    const rotateX = ((y / (rect.height / 2)) * rotateMax).toFixed(2);
+    const rotateY = (-(x / (rect.width / 2)) * rotateMax).toFixed(2);
 
-  const handleAboutMeClick = () => {
-    if (isAnimating) return; // 애니메이션 중복 실행 방지
-    setIsAnimating(true);
-
-    setTimeout(() => {
-      setIsOriginalText(!isOriginalText);
-      setIsAnimating(false);
-    }, 500);
-  };
-
-  useEffect(() => {
-    const options = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.1, //뷰포트 10%로 들어올 떄 진행
-    };
-
-    // 배열의 각 인덱스에 특정 섹션 요소 저장
-    // 해당 섹션들이 뷰포트에 들어오면 in-view 클래스 추가
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("in-view");
-        } else {
-          entry.target.classList.remove("in-view");
-        }
-      });
-    }, options);
-
-    const currentSectionRefs = sectionRefs.current;
-
-    currentSectionRefs.forEach((section) => {
-      if (section) observer.observe(section);
+    setAboutTilt({
+      transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
     });
+  }, []);
 
-    return () => {
-      currentSectionRefs.forEach((section) => {
-        if (section) observer.unobserve(section);
-      });
-    };
+  const handleTiltLeave = useCallback(() => {
+    setAboutTilt({ transform: "none", transition: "transform 0.5s ease" });
   }, []);
 
   return (
-    <div className="about-me-container">
-      {/* 첫 번째 섹션 */}
-      <section
-        ref={(el) => (sectionRefs.current[0] = el)}
-        className="about-me-section about-me-first-section"
-      >
-        <div className="about-me-content">
-          <div className="about-me-text">
-            <blockquote>
-              "밥도 골고루 잘 먹어야 하듯
-              <br />
-              개발도 골고루 잘하자"
-            </blockquote>
-            <p
-              onClick={handleAboutMeClick}
-              className={isAnimating ? "hidden" : ""}
-              role="button"
-              aria-pressed={!isOriginalText}
-            >
-              {isOriginalText ? (
-                ": Click me!"
-              ) : (
-                <>
-                  안녕하세요, 저는 도전적인 개발자 정성한입니다. <br />
-                  군 복무를 하면서 개발에 관심을 가지게 되었고, <br />
-                  천천히 개발 교육을 들으며 개발을 시작하게 되었습니다. <br />
-                  늦게 시작했지만 누구보다 개발에 열정적이고 싶으며, <br />
-                  다양한 분야에서 개발할 수 있는 <br />
-                  팀에게 항상 도움이 되는 멋진 개발자가 되고 싶습니다.
-                </>
-              )}
+    <div className="page-container">
+      {/* 헤더 */}
+      <header className="header">
+        <div className="branding">Sunghan PortFolio</div>
+        <nav className="nav">
+          <a href="#hero">Home</a>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="/projects">Projects</a>          
+        </nav>
+      </header>
+
+      {/* Hero Section */}
+      <section className="hero-section" id="hero">
+        <h1 className="hero-title">Junior Developer</h1>
+        <p className="hero-subtitle">
+          안녕하세요, 저는 풀스택 개발을 지향하는 정성한입니다. <br />
+          사용자 경험을 최우선으로 생각하며, 협업과 웃음으로 개발을 진행하고 있습니다.          
+        </p>
+        <button
+          className="hero-button"
+          onClick={() =>
+            document
+              .getElementById("about")
+              .scrollIntoView({ behavior: "smooth" })
+          }
+        >
+          <span>About Me</span>
+        </button>
+      </section>
+
+      {/* About Section */}
+      <section className="about-section" id="about">
+        <div className="about-wrapper">
+          <div className="about-text">
+            <h2>About Me</h2>
+            <p>
+              안녕하세요, 저는 풀스택 개발을 지향하는 <strong>정성한</strong>
+              입니다. <br />군 복무 시절부터 개발에 관심을 가지면서 개발을
+              학습해오고 성장해 왔습니다.
+            </p>
+            <p>
+              React와 JAVA 및 Spring Boot 로 3개의 팀, 개인 프로젝트를 완주하며<br/>
+              웹 프론트 및 백엔드 전반을 경험한 주니어 개발자 입니다. <br/>
+              Jira와 노션을 이용하여 프로젝트가 혼동되는 일이 없게 정리하여 처리 시간을 단축, <br/>
+               새 기술 학습 속도가 빠르며 `좋은 개발자는 좋은 팀플레이` <br/>
+              생각으로 문제를 공유 및 해결해 팀 결과에 기여합니다.
             </p>
           </div>
-          <div className="about-me-image">
-            <img src={aboutMeImage} alt="About Me" />
+
+          <div className="photo-wrapper">
+            <div
+              className="tilt-card"
+              style={aboutTilt}
+              onMouseMove={handleTiltMove}
+              onMouseLeave={handleTiltLeave}
+              tabIndex="0"
+              aria-label="My Photo with 3D Tilt"
+            >
+              <div className="photo-content">
+                <Suspense
+                  fallback={<div style={{ color: "#888" }}>사진 로딩중...</div>}
+                >
+                  <img src={myPhoto} alt="myProfile" />
+                </Suspense>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 두 번째 섹션 */}
-      <section
-        ref={(el) => (sectionRefs.current[1] = el)}
-        className="about-me-section about-me-second-section"
-      >
-        <div className="keyword-content-wrapper">
-          <div className="keyword-left">
-            <h1>My Keywords</h1>
-            <p>: "These three words represent who I am."</p>
-          </div>
-          <div className="keyword-right">
-            <div className="keyword-item">
-              <div className="keyword-number">01</div>
-              <div className="keyword-content">
-                <h3>Challenging & Persevering</h3>
-                <p>
-                  도전하는 것을 정말 좋아합니다.
-                  <br />
-                  새로운 무언가가 있다면 도전하고자 하며, 어려움이 닥쳐도 목표를 이룰 때까지 
-                  끈기 있게 끝까지 도전합니다.
-                </p>
-              </div>
+      {/* Skills Section */}
+      <section className="skills-section" id="skills">
+        <div className="skills-wrapper">
+          <h2 className="skills-title">My Skills</h2>
+          <div className="skills-grid">
+            <div className="skill-card">
+              <div className="skill-icon">💻</div>
+              <div className="skill-name">HTML / CSS3 / React / JavaScript</div>
             </div>
-
-            <div className="keyword-item">
-              <div className="keyword-number">02</div>
-              <div className="keyword-content">
-                <h3>Empathy and Care</h3>
-                <p>
-                  타인의 말에 잘 공감하고 이야기를 듣는 것을 좋아하며, 허투로
-                  듣지 않고 경청하여 상대방을 이해하려고 합니다.
-                  <br />
-                  나와 의견이 달라 논쟁이 있더라도 타인과 최대한 합의점을 찾아 이야기하려고 합니다.
-                </p>
-              </div>
+            <div className="skill-card">
+              <div className="skill-icon">🔥</div>
+              <div className="skill-name">Java / Spring Boot / Python</div>
             </div>
-
-            <div className="keyword-item">
-              <div className="keyword-number">03</div>
-              <div className="keyword-content">
-                <h3>Positive Attitude</h3>
-                <p>
-                  긍정적이고 열정적인 모습이 저의 강점이자 저를 표현하기 좋은 것 같습니다.
-                  <br />
-                  어떤 문제나 상황에서도 긍정적으로 해결책을 찾기 위해 노력합니다.
-                </p>
-              </div>
+            <div className="skill-card">
+              <div className="skill-icon">📂</div>
+              <div className="skill-name">MySQL / Firebase </div>
             </div>
-          </div>
-          <div className="keyword-image">
-            <img src={myBlurredImage} alt="Blurred Background" />
           </div>
         </div>
       </section>
 
-      {/* 세 번째 섹션 */}
-      <section
-        ref={(el) => (sectionRefs.current[2] = el)}
-        className="about-me-section about-me-third-section"
-      >
-        <div className="about-me-skills-content">
-          <h2>MY SKILLS</h2>
-          <div className="skills-category">
-            <h3>Front-End</h3>
-            <ul className="skills-list">
-              <li>
-                <FaHtml5 className="skill-icon" />
-                <span>HTML</span>
-              </li>
-              <li>
-                <FaCss3Alt className="skill-icon" />
-                <span>CSS</span>
-              </li>
-              <li>
-                <FaJsSquare className="skill-icon" />
-                <span>JavaScript</span>
-              </li>
-              <li>
-                <FaReact className="skill-icon" />
-                <span>React</span>
-              </li>
-            </ul>
-          </div>
-          <div className="skills-category">
-            <h3>Back-End</h3>
-            <ul className="skills-list">
-              <li>
-                <FaJava className="skill-icon" />
-                <span>Java</span>
-              </li>
-              <li>
-                <SiSpringboot className="skill-icon" />
-                <span>Spring Boot</span>
-              </li>
-            </ul>
-          </div>
-          <div className="skills-category">
-            <h3>Database</h3>
-            <ul className="skills-list">
-              <li>
-                <SiMysql className="skill-icon" />
-                <span>MySQL</span>
-              </li>
-            </ul>
-          </div>
-          <div className="skills-category">
-            <h3>Other</h3>
-            <ul className="skills-list">
-              <li>
-                <SiJira className="skill-icon" />
-                <span>Jira</span>
-              </li>
-              <li>
-                <FaGithub className="skill-icon" />
-                <span>GitHub</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* 네 번째 섹션 */}
-      <section
-        ref={(el) => (sectionRefs.current[3] = el)}
-        className="about-me-section about-me-footer-section"
-      >
-        <Footer />
-      </section>
+      {/* Footer */}
+      <footer className="footer">
+        © 2025 정성한. All rights reserved. |{" "}
+        <a
+          href="https://github.com/JeongSunghan"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+        </a>
+      </footer>
     </div>
   );
-};
-
-export default AboutMe;
+}

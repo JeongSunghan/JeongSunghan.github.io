@@ -1,62 +1,158 @@
-.footer-container {
-  background-color: #111111;
-  color: #fff;
-  padding: 2rem;
-  width: 100%; 
-  box-sizing: border-box;
+.footer {
+  width: 100vw;
+  background: transparent;
+  position: relative;
+  z-index: 10;
+  align-items: center;
+  justify-content: center;
 }
 
-.footer-nav {
+.footer-glass {
+  width: 100vw;
+  background: rgba(30, 32, 40, 0.82);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+  backdrop-filter: blur(18px) saturate(120%);
+  -webkit-backdrop-filter: blur(18px) saturate(120%);
+  border-top: 1.5px solid rgba(255,255,255,0.08);
+  padding: 0;
+  margin: 0;
+}
+
+.footer-inner {
   display: flex;
-  justify-content: space-between; 
-  align-items: center;
-  width: 100%; 
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 3rem;
+  padding: 2.5rem 7vw 1.2rem 7vw;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.footer-col {
+  flex: 1 1 0;
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+  background: linear-gradient(90deg, #00ffa7 0%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  letter-spacing: 0.01em;
+}
+
+.footer-divider {
+  width: 38px;
+  height: 3px;
+  background: linear-gradient(90deg, #00ffa7 0%, #7c3aed 100%);
+  border-radius: 2px;
+  margin-bottom: 1.1rem;
+}
+
+.footer-desc {
+  font-size: 1.01rem;
+  color: #e5e7eb;
+  margin-bottom: 0.5rem;
+  opacity: 0.85;
 }
 
 .footer-link {
   color: #fff;
   text-decoration: none;
-  font-size: 1.5rem;
-  font-weight: bold;
+  font-size: 1.02rem;
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+  transition: color 0.2s, text-shadow 0.2s;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  border-radius: 6px;
+  padding: 0.1rem 0.3rem;
 }
-
 .footer-link:hover {
-  color: #ddd;
+  color: #00ffa7;
+  text-shadow: 0 0 8px #00ffa7, 0 0 16px #7c3aed;
+  background: rgba(0,255,167,0.08);
 }
 
-.arrow {
-  font-size: 1.5rem;
+.footer-contact-item {
+  font-size: 1.01rem;
+  color: #e5e7eb;
+  margin-bottom: 0.2rem;
+  opacity: 0.9;
 }
 
-.footer-info {
+.footer-social-group {
   display: flex;
-  justify-content: space-between; 
-  align-items: center;
-  margin-top: 2rem;
-  flex-wrap: wrap;
-  width: 100%;
+  gap: 1.1rem;
+  margin-top: 0.2rem;
 }
 
-.footer-text {
-  font-size: 1rem;  
-  text-align: left;
-}
-
-.footer-text p {
-  margin: 0.5rem 0;
-}
-
-.footer-social {
-  flex: 1; /* 남은 공간을 차지하도록 */
-  text-align: right; /* 오른쪽 정렬 */
-}
-
-.footer-social a {
+.footer-social-icon {
+  font-size: 1.6rem;
   color: #fff;
-  font-size: 2rem;
-  margin-left: 1rem;
+  background: rgba(60,60,80,0.25);
+  border-radius: 50%;
+  padding: 0.55rem;
+  transition: box-shadow 0.2s, background 0.2s, color 0.2s, transform 0.2s;
+  box-shadow: 0 2px 8px rgba(0,255,167,0.08);
+  border: 1.5px solid rgba(124,58,237,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer-social-icon:hover {
+  background: linear-gradient(135deg, #00ffa7 0%, #7c3aed 100%);
+  color: #23232b;
+  box-shadow: 0 0 12px 2px #00ffa7, 0 0 24px 4px #7c3aed;
+  transform: scale(1.08) translateY(-2px);
 }
 
-.footer-social a:hover {
-  color: #ddd;
+.footer-bottom-bar {
+  text-align: center;
+  padding: 1.2rem 0 0.5rem 0;
+  font-size: 0.97rem;
+  color: #bdbdbd;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  margin-top: 0.5rem;
+  letter-spacing: 0.01em;
+  background: transparent;
+}
+
+@media (max-width: 900px) {
+  .footer-inner {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 4vw 1rem 4vw;
+  }
+  .footer-col {
+    min-width: 0;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-glass {
+    padding: 0;
+  }
+  .footer-inner {
+    padding: 1.2rem 2vw 0.7rem 2vw;
+    gap: 1.1rem;
+  }
+  .footer-title {
+    font-size: 1rem;
+  }
+  .footer-desc, .footer-contact-item {
+    font-size: 0.97rem;
+  }
+  .footer-divider {
+    width: 28px;
+    height: 2px;
+    margin-bottom: 0.7rem;
+  }
 }
