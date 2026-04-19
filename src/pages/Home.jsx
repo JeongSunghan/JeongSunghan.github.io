@@ -11,6 +11,7 @@ import {
 import { SiSpring, SiJavascript, SiTypescript } from "react-icons/si";
 import { HiArrowRight, HiSparkles } from "react-icons/hi";
 import profile from "../assets/image/about-me-home.png";
+import projectsData from "../data/projectsData";
 import "../styles/Home.css";
 
 const stack = [
@@ -79,9 +80,8 @@ export default function Home() {
             </motion.h1>
 
             <motion.p className="hero__desc" variants={fadeUp}>
-              React와 Spring Boot로 웹을 만들고, 여가에는 Godot과 Phaser로
-              엉뚱한 게임을 만듭니다. 좋은 개발자는 좋은 팀플레이어라고 믿는
-              주니어 개발자입니다.
+              불편을 지나치지않고, 운영의 병목을  서비스와 자동화로 해결할려하며,<br />
+              좋은 개발자는 좋은 팀플레이어라고 믿는 주니어 개발자입니다.
             </motion.p>
 
             <motion.div className="hero__cta" variants={fadeUp}>
@@ -171,8 +171,8 @@ export default function Home() {
               빠르게 적응하는 풀스택 주니어.
             </h3>
             <p>
-              FlowNary·OnFit 팀 프로젝트와 DEATHON·PromptCraft 등 개인 프로젝트를 완주하며
-              프론트·백엔드·웹 게임까지 경험했습니다.
+              DEATHON·PromptCraft·머니캐쳐 같은 프로젝트를 완주하며
+              프론트엔드, 백엔드, 웹 게임까지 폭넓게 경험했습니다.
             </p>
             <Link to="/about" className="bento__link">
               About 더 보기 <HiArrowRight />
@@ -188,8 +188,8 @@ export default function Home() {
           >
             <div className="bento__card-eye">Projects</div>
             <div className="bento__count">
-              <span className="bento__count-num">10+</span>
-              <span className="bento__count-label">완주</span>
+              <span className="bento__count-num">{projectsData.length}</span>
+              <span className="bento__count-label">프로젝트</span>
             </div>
             <Link to="/projects" className="bento__link">
               작업물 보기 <HiArrowRight />
@@ -206,7 +206,7 @@ export default function Home() {
             <div className="bento__card-eye">Currently</div>
             <ul className="bento__list">
               <li>
-                <span className="dot" /> Godot & Phaser3로 인디 게임 프로토타이핑
+                <span className="dot" /> Godot & Phaser3로 인디 게임 학습 중
               </li>
               <li>
                 <span className="dot" /> Three.js · 모바일 최적화 학습 중

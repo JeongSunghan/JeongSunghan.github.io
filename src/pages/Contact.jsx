@@ -126,7 +126,7 @@ export default function Contact() {
       >
         <p>
           <span className="mono">$</span> 기회는 언제든 열려 있습니다. 프리랜스,
-          팀 프로젝트, 오픈 소스 기여 — 어떤 제안이든 환영합니다.
+          제품 개발, 오픈 소스 기여 — 어떤 제안이든 환영합니다.
         </p>
       </motion.section>
     </div>

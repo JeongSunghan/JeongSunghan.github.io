@@ -1,13 +1,9 @@
-import flownary from "../assets/image/project1.png";
 import musicPlayer from "../assets/image/project4.png";
 import wordle from "../assets/image/project5.png";
 import portfolio from "../assets/image/project6.png";
 import promptcraft from "../assets/image/promptcraft.png";
 import moneycatcher from "../assets/image/moneycatcher.png";
 import deathton from "../assets/image/deathton.png";
-import knifetruck from "../assets/image/knifetruck.png";
-import kvca from "../assets/image/kvca.png";
-import onfit from "../assets/image/onfit.png";
 
 // 최신순으로 정렬 — 2026 → 2024
 const projectsData = [
@@ -36,7 +32,7 @@ const projectsData = [
   {
     id: "promptcraft",
     title: "PromptCraft",
-    subtitle: "AI 콘텐츠 생성 SaaS · MVP",
+    subtitle: "AI 콘텐츠 생성 SaaS · MVP - 제작 중",
     year: "2026",
     role: "Solo",
     description:
@@ -55,39 +51,7 @@ const projectsData = [
     github: "https://github.com/JeongSunghan/promptcraft",
     featured: true,
   },
-  {
-    id: "knifetruck",
-    title: "KnifeTruck",
-    subtitle: "동네 칼갈이 제보 MVP",
-    year: "2026",
-    role: "Solo",
-    description:
-      "수원 기준 이동형 칼갈이 트럭의 위치를 실시간 공유하고 관심 지역 알림을 저장하는 하이퍼로컬 MVP. Next.js 15 + React 19 기반, Supabase RLS로 제보/구독 플로우를 검증하고, env가 없을 땐 mock·localStorage로 동일 UX를 재현하도록 설계했습니다.",
-    img: knifetruck,
-    tags: ["Solo", "Full-stack"],
-    techStack: ["Next.js 15", "React 19", "TypeScript", "Supabase", "Kakao Maps"],
-    github: "https://github.com/JeongSunghan/-",
-  },
-  {
-    id: "kvca",
-    title: "KVCA Automation",
-    subtitle: "관리자 업무 자동화",
-    year: "2026",
-    role: "Solo",
-    description:
-      "KVCA 관리자 페이지 데이터를 주기 수집·diff 비교하고 AUTO/AMBIGUOUS/NEEDS_REVIEW 상태로 분류해 Google Sheets·카카오 알림으로 후처리하는 자동화 시스템. Next.js 대시보드 + Cloud Run 워커 + Cloud Scheduler로 구성된 엔드투엔드 파이프라인입니다.",
-    img: kvca,
-    tags: ["Solo", "Automation", "Full-stack"],
-    techStack: [
-      "Next.js",
-      "FastAPI",
-      "Supabase",
-      "Cloud Run",
-      "Cloud Scheduler",
-      "Python",
-    ],
-    github: "https://github.com/JeongSunghan/kvca_automation",
-  },
+  
   {
     id: "moneycatcher",
     title: "머니캐쳐",
@@ -103,40 +67,7 @@ const projectsData = [
     link: "https://toos-money-catcher.vercel.app/",
     featured: true,
   },
-  {
-    id: "onfit",
-    title: "OnFit",
-    subtitle: "날씨 기반 코디 추천 · 팀",
-    year: "2025",
-    role: "Team",
-    description:
-      "실시간 온도·풍량·강수 확률을 기반으로 아침·점심·저녁별 레이어링 코디를 제안하는 웹·모바일 통합 서비스. React Native(Expo) 프론트와 FastAPI 백엔드, MySQL(Cloud SQL)로 구성된 팀 프로젝트로, OpenWeather API 연동·사용자별 즐겨찾기/히스토리·관리 콘솔을 담당했습니다.",
-    img: onfit,
-    tags: ["Team", "Full-stack", "Mobile"],
-    techStack: [
-      "React Native",
-      "Expo",
-      "TypeScript",
-      "FastAPI",
-      "MySQL",
-      "OpenWeather API",
-    ],
-    github: "https://github.com/JeongSunghan/Onfit",
-  },
-  {
-    id: "flownary",
-    title: "FlowNary",
-    subtitle: "SNS 플랫폼 · 팀 최종 프로젝트",
-    year: "2024",
-    role: "Team",
-    description:
-      "React + Spring Boot 기반의 세대 통합 SNS 플랫폼. 피드·댓글·좋아요·팔로우·실시간 채팅 등 핵심 SNS 기능을 팀으로 구현하며, Git 플로우와 Jira/Notion 기반 이슈 트래킹을 실전에서 경험했습니다.",
-    img: flownary,
-    tags: ["Team", "Full-stack"],
-    techStack: ["React", "Spring Boot", "MySQL", "Firebase", "MUI"],
-    github: "https://github.com/JeongSunghan/codeFactory_9h_master_Jss",
-    featured: true,
-  },
+  
   {
     id: "music-player",
     title: "React Music Player",

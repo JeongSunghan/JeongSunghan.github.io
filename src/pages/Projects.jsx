@@ -5,15 +5,25 @@ import { HiArrowUpRight } from "react-icons/hi2";
 import projectsData from "../data/projectsData";
 import "../styles/Projects.css";
 
-const FILTERS = ["All", "Team", "Solo", "Game"];
+const FILTERS = [
+  { label: "All", count: projectsData.length },
+  {
+    label: "Solo",
+    count: projectsData.filter((p) => p.role === "Solo").length,
+  },
+  {
+    label: "Game",
+    count: projectsData.filter((p) =>
+      p.tags?.some((t) => t.toLowerCase().includes("game"))
+    ).length,
+  },
+];
 
 export default function Projects() {
   const [filter, setFilter] = useState("All");
 
   const visible = useMemo(() => {
     if (filter === "All") return projectsData;
-    if (filter === "Team")
-      return projectsData.filter((p) => p.tags?.includes("Team"));
     if (filter === "Solo")
       return projectsData.filter((p) => p.role === "Solo");
     if (filter === "Game")
@@ -36,31 +46,21 @@ export default function Projects() {
           <span className="grad-text">Projects</span> I've shipped.
         </h1>
         <p>
-          팀으로, 혼자서 완주한 프로젝트들입니다. 각 카드에서 기술 스택과
-          소스코드를 확인할 수 있습니다.
+          완주한 프로젝트들을 모아둔 아카이브입니다. 각 카드에서 기술 스택과
+          소스코드, 데모를 확인할 수 있습니다.
         </p>
 
         <div className="projects-filters" role="tablist" aria-label="Filter projects">
-          {FILTERS.map((f) => (
+          {FILTERS.map(({ label, count }) => (
             <button
-              key={f}
-              className={`projects-filter ${filter === f ? "is-active" : ""}`}
-              onClick={() => setFilter(f)}
+              key={label}
+              className={`projects-filter ${filter === label ? "is-active" : ""}`}
+              onClick={() => setFilter(label)}
               role="tab"
-              aria-selected={filter === f}
+              aria-selected={filter === label}
             >
-              {f}
-              <span className="projects-filter__count">
-                {f === "All"
-                  ? projectsData.length
-                  : f === "Team"
-                  ? projectsData.filter((p) => p.tags?.includes("Team")).length
-                  : f === "Solo"
-                  ? projectsData.filter((p) => p.role === "Solo").length
-                  : projectsData.filter((p) =>
-                      p.tags?.some((t) => t.toLowerCase().includes("game"))
-                    ).length}
-              </span>
+              {label}
+              <span className="projects-filter__count">{count}</span>
             </button>
           ))}
         </div>

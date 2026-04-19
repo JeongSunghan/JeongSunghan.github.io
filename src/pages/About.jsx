@@ -20,6 +20,9 @@ import {
   SiGodotengine,
   SiNotion,
   SiJira,
+  SiSupabase,
+  SiNextdotjs,
+  SiTailwindcss,
 } from "react-icons/si";
 import { HiArrowRight } from "react-icons/hi";
 import myPhoto from "../assets/image/MyPhoto.jpg";
@@ -28,10 +31,12 @@ import "../styles/About.css";
 const skills = {
   Frontend: [
     { icon: <FaReact />, name: "React", level: "핵심 사용" },
+    { icon: <SiNextdotjs />, name: "Next.js", level: "핵심 사용" },
     { icon: <SiJavascript />, name: "JavaScript", level: "핵심 사용" },
-    { icon: <SiTypescript />, name: "TypeScript", level: "학습 중" },
+    { icon: <SiTypescript />, name: "TypeScript", level: "사용 가능" },
     { icon: <FaHtml5 />, name: "HTML5", level: "핵심 사용" },
     { icon: <FaCss3Alt />, name: "CSS3", level: "핵심 사용" },
+    { icon: <SiTailwindcss />, name: "Tailwind CSS", level: "사용 가능" },
   ],
   Backend: [
     { icon: <FaJava />, name: "Java", level: "핵심 사용" },
@@ -42,12 +47,13 @@ const skills = {
   "Data / Tools": [
     { icon: <SiMysql />, name: "MySQL", level: "사용 가능" },
     { icon: <SiFirebase />, name: "Firebase", level: "사용 가능" },
+    { icon: <SiSupabase />, name: "Supabase", level: "사용 가능" },
     { icon: <FaGitAlt />, name: "Git / GitHub", level: "핵심 사용" },
     { icon: <SiJira />, name: "Jira", level: "사용 가능" },
     { icon: <SiNotion />, name: "Notion", level: "사용 가능" },
   ],
   "Game / Learning": [
-    { icon: <SiGodotengine />, name: "Godot", level: "프로토타이핑" },
+    { icon: <SiGodotengine />, name: "Godot", level: "학습 중" },
     { icon: <FaDatabase />, name: "Three.js", level: "학습 중" },
   ],
 };
@@ -66,26 +72,21 @@ const values = [
     body: "기술보다 사용자의 경험을 먼저 생각합니다. 가독성과 반응성, 모바일 사용성을 항상 체크합니다.",
   },
   {
-    title: "문서화 · 정리",
-    body: "Jira · Notion으로 프로젝트 문맥과 이슈를 잃지 않도록 정리해왔습니다. 작은 팀일수록 기록이 팀의 속도가 된다고 생각합니다.",
+    title: "서비스 지향형",
+    body: "아이디어보다 실행을 중시하며, 실제 사용자 문제를 빠르게 제품으로 검증하는 방식을 선호합니다.",
   },
 ];
 
 const timeline = [
   {
-    year: "2026",
-    title: "DEATHON · PromptCraft · KnifeTruck · KVCA",
-    body: "Three.js + Socket.IO 멀티플레이 게임, AI 콘텐츠 SaaS MVP, 하이퍼로컬 제보 플랫폼, 관리 업무 자동화 시스템까지 4개 프로젝트를 병행하며 풀스택 확장.",
+    year: "~ing",
+    title: "DEATHON · PromptCraft",
+    body: "Three.js + Socket.IO 멀티플레이 게임, AI 콘텐츠 SaaS MVP 등 프로젝트를 병행하며 풀스택 확장.",
   },
   {
-    year: "2025",
-    title: "OnFit 팀 프로젝트 & 머니캐쳐 게임",
-    body: "날씨 기반 코디 추천 앱을 React Native + FastAPI로 팀 개발. HTML5 아케이드 게임 '머니캐쳐'로 토스·넵튠 공모전 참여.",
-  },
-  {
-    year: "2024",
-    title: "FlowNary 팀 프로젝트 완주",
-    body: "React + Spring Boot SNS 플랫폼. 피드·채팅·팔로우 등 핵심 SNS 기능을 팀으로 구현하며 Git 플로우와 이슈 트래킹을 실전 경험.",
+    year: "2025 - 2026",
+    title: "KVCA 자동화 개발 & 머니캐쳐 게임",
+    body: "HTML5 아케이드 게임 '머니캐쳐'로 토스·넵튠 연습 토이프로젝트 개발 및 한국벤처캐피탈협회 업무 자동화 프로젝트.",
   },
   {
     year: "2024",
@@ -113,33 +114,33 @@ export default function About() {
           <span className="eyebrow">01 — About</span>
           <h1>
             디자인 감각을 잃지 않는<br />
-            <span className="grad-text">풀스택 주니어 개발자</span>입니다.
+            <span className="grad-text">주니어 개발자</span>입니다.
           </h1>
           <p className="about-intro__lede">
-            React와 Spring Boot로 웹을 만들고, 여가에는 Godot과 Phaser로 엉뚱한
-            게임을 만듭니다. 1인 개발자를 꿈꾸며, 기획부터 배포까지 스스로
-            완주할 수 있는 개발자가 되는 것을 목표로 합니다.
+            React,Next.js를 기반으로 웹을 만들고, Wasy1, KVCA 두 곳에  <br />
+            근무하면서 반복적인 업무 혹은 개선이 필여한 사항을 자동화하고, <br />
+            기획부터 배포까지 스스로 완주할 수 있는 개발자가 되는 것을 목표로 합니다.
           </p>
           <div className="about-intro__facts">
             <div>
-              <span className="about-intro__fact-label">기반</span>
-              <span className="about-intro__fact-value">Seoul, KR</span>
+              <span className="about-intro__fact-label">위치</span>
+              <span className="about-intro__fact-value">Suwon, KR</span>
             </div>
             <div>
               <span className="about-intro__fact-label">직군</span>
-              <span className="about-intro__fact-value">Full-stack · Web</span>
+              <span className="about-intro__fact-value">Full-stack · Dev</span>
             </div>
             <div>
               <span className="about-intro__fact-label">관심사</span>
               <span className="about-intro__fact-value">
-                Game · UI · AI 협업
+                Web/App · UI · AI 협업
               </span>
             </div>
           </div>
         </div>
         <div className="about-intro__right">
           <div className="about-photo">
-            <img src={myPhoto} alt="정성한 프로필 사진" loading="lazy" />
+            {/* <img src={myPhoto} alt="정성한 프로필 사진" loading="lazy" /> */}
             <div className="about-photo__frame" />
           </div>
         </div>
