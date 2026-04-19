@@ -74,23 +74,23 @@ const values = [
 const timeline = [
   {
     year: "2026",
-    title: "인디 게임 프로토타이핑",
-    body: "Godot, Phaser3, PixiJS로 룰렛형 · 로그라이크 게임 메커닉 실험.",
+    title: "DEATHON · PromptCraft · KnifeTruck · KVCA",
+    body: "Three.js + Socket.IO 멀티플레이 게임, AI 콘텐츠 SaaS MVP, 하이퍼로컬 제보 플랫폼, 관리 업무 자동화 시스템까지 4개 프로젝트를 병행하며 풀스택 확장.",
   },
   {
     year: "2025",
-    title: "Three.js · 모바일 최적화",
-    body: "3D 웹 그래픽과 모바일 퍼포먼스 최적화 학습을 병행.",
+    title: "OnFit 팀 프로젝트 & 머니캐쳐 게임",
+    body: "날씨 기반 코디 추천 앱을 React Native + FastAPI로 팀 개발. HTML5 아케이드 게임 '머니캐쳐'로 토스·넵튠 공모전 참여.",
   },
   {
     year: "2024",
     title: "FlowNary 팀 프로젝트 완주",
-    body: "React + Spring Boot SNS 프로젝트. 풀스택 워크플로우 실전 경험.",
+    body: "React + Spring Boot SNS 플랫폼. 피드·채팅·팔로우 등 핵심 SNS 기능을 팀으로 구현하며 Git 플로우와 이슈 트래킹을 실전 경험.",
   },
   {
-    year: "2023",
-    title: "웹 개발 기초 다지기",
-    body: "HTML/CSS/JS 바닐라 토이 프로젝트와 교육 플랫폼 개발 참여.",
+    year: "2024",
+    title: "Wordle · React Music Player",
+    body: "바닐라 JS 워들 클론으로 DOM API 기본기, YouTube API 뮤직 플레이어로 React 훅·상태 관리 연습.",
   },
 ];
 

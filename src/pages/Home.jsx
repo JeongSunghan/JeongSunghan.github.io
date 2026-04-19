@@ -171,8 +171,8 @@ export default function Home() {
               빠르게 적응하는 풀스택 주니어.
             </h3>
             <p>
-              3개의 팀 프로젝트와 다수의 개인 프로젝트를 완주하며 프론트와
-              백엔드를 모두 경험했습니다.
+              FlowNary·OnFit 팀 프로젝트와 DEATHON·PromptCraft 등 개인 프로젝트를 완주하며
+              프론트·백엔드·웹 게임까지 경험했습니다.
             </p>
             <Link to="/about" className="bento__link">
               About 더 보기 <HiArrowRight />
@@ -188,7 +188,7 @@ export default function Home() {
           >
             <div className="bento__card-eye">Projects</div>
             <div className="bento__count">
-              <span className="bento__count-num">4+</span>
+              <span className="bento__count-num">10+</span>
               <span className="bento__count-label">완주</span>
             </div>
             <Link to="/projects" className="bento__link">
