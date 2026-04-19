@@ -1,7 +1,17 @@
- .App {        
-    background-color: #000;
-    font-family: 'Arial', sans-serif;
-    overflow-y: hidden;
+/* App-level layout */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-main {
+  flex: 1;
+  padding-top: 72px; /* header height */
+}
+
+@media (max-width: 640px) {
+  .app-main {
+    padding-top: 64px;
   }
-  
-  
+}

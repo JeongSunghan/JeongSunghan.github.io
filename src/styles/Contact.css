@@ -1,264 +1,168 @@
-.contact-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #0c0c0c, #1a1a1a);
-    position: relative;
-    overflow: hidden;
-    color: #ffffff;
+.contact-page {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 80px 32px 40px;
 }
 
-.contact-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at center, rgba(0, 255, 167, 0.1) 0%, transparent 70%);
-    animation: pulse 8s ease-in-out infinite;
+.contact-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.contact-header h1 {
+  font-size: clamp(2.25rem, 6vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin: 12px 0 20px;
+}
+.contact-header p {
+  max-width: 560px;
+  margin: 0 auto;
+  color: var(--text-2);
+  font-size: var(--text-md);
+  line-height: 1.7;
 }
 
-/* 배경 파티클 추가 */
-.contact-container::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 300px;
-    height: 300px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    animation: float 20s infinite ease-in-out;
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
 }
 
-.contact-container::after {
-    width: 500px;
-    height: 500px;
-    animation-delay: 10s;
+.contact-card {
+  position: relative;
+  padding: 32px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all 0.3s var(--ease-out);
+}
+.contact-card:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-strong);
+  transform: translateY(-3px);
+}
+.contact-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background: var(--grad-primary);
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: -1;
+  border-radius: var(--radius-lg);
+}
+.contact-card:hover::before {
+  opacity: 0.12;
 }
 
-/* 이미지 섹션 */
-.contact-image {
-    flex: 1;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-    padding: 2rem;
+.contact-card__icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(
+    135deg,
+    rgba(124, 156, 255, 0.15),
+    rgba(183, 148, 255, 0.08)
+  );
+  border: 1px solid rgba(124, 156, 255, 0.18);
+  color: var(--accent);
+  font-size: 1.2rem;
+  margin-bottom: 20px;
 }
 
-.contact-image img {
-    width: 60%;
-    border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    filter: grayscale(50%) contrast(110%);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+.contact-card__label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 8px;
 }
 
-.contact-image img:hover {
-    transform: scale(1.05) rotate(2deg);
-    filter: grayscale(0%) contrast(120%);
-    box-shadow: 0 30px 60px rgba(0, 255, 167, 0.2);
+.contact-card__value {
+  font-size: var(--text-md);
+  color: var(--text-1);
+  font-weight: 500;
+  word-break: break-all;
+  margin-bottom: 20px;
 }
 
-/* 상세 정보 섹션 */
-.contact-details {
-    flex: 1;
-    padding: 3rem;
-    position: relative;
-    z-index: 1;
+.contact-card__actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
-.contact-details h2 {
-    font-size: 3.5rem;
-    font-weight: 800;
-    margin: 0;
-    background: linear-gradient(45deg, #00ffa7, #7c3aed);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: fadeInDown 1s ease forwards;
+.contact-card__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--bg-0);
+  background: var(--text-1);
+  border: 1px solid var(--text-1);
+  border-radius: 999px;
+  transition: all 0.2s var(--ease-out);
+}
+.contact-card__btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(255, 255, 255, 0.12);
 }
 
-.contact-details h2::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 0;
-    width: 100%;
-    height: 5px;
-    background-color: #c0bfbc; 
-    border-radius: 2.5px;
+.contact-card__copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-2);
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  transition: all 0.2s var(--ease-out);
+}
+.contact-card__copy:hover {
+  color: var(--text-1);
+  background: var(--bg-3);
+  border-color: var(--border-strong);
+}
+.contact-card__copy svg {
+  font-size: 0.85em;
 }
 
-.contact-details h3 {
-    font-size: 2rem;
-    margin: 1rem 0;
-    color: #ffffff;
-    animation: fadeInUp 1s ease forwards;
-    animation-delay: 0.3s;
+.contact-foot {
+  margin-top: 56px;
+  padding: 32px;
+  text-align: center;
+  background: var(--surface);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-lg);
+}
+.contact-foot p {
+  color: var(--text-2);
+  font-size: var(--text-sm);
+  line-height: 1.7;
+}
+.contact-foot .mono {
+  color: var(--accent);
+  margin-right: 4px;
 }
 
-.contact-info {
-    margin-top: 2rem;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 2rem;
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.contact-info p {
-    display: flex;
-    align-items: center;
-    font-size: 1.2rem;
-    margin: 1rem 0;
-    color: #cccccc;
-    transition: all 0.3s ease;
-}
-
-.contact-info p:hover {
-    color: #ffffff;
-    transform: translateX(10px);
-}
-
-.contact-info .icon {
-    margin-right: 1rem;
-    font-size: 1.5rem;
-    background: linear-gradient(45deg, #00ffa7, #7c3aed);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-/* 푸터 섹션 */
-.footer {
-    margin-top: 3rem;
-    text-align: center;
-    color: #888888;
-    font-size: 0.9rem;
-    margin-top: 30px;
-    font-size: 1rem;
-    opacity: 0;
-    animation: fadeIn 1.5s ease forwards;
-    animation-delay: 2s;
-}
-
-.footer p {
-    color: #a0a0a0; 
-}
-
-/* 애니메이션 정의 */
-@keyframes gradientAnimation {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-}
-
-@keyframes float {
-    0%, 100% {
-      transform: translate(-50%, -50%) scale(0);
-      opacity: 0.5;
-    }
-    50% {
-      transform: translate(-50%, -50%) scale(1);
-      opacity: 0;
-    }
-}
-
-@keyframes fadeInDown {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-}
-
-@keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-}
-
-@keyframes slideIn {
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-}
-
-@keyframes fadeIn {
-    to {
-      opacity: 1;
-    }
-}
-
-/* 반응형 디자인 */
-@media (max-width: 768px) {
-    .contact-container {
-      flex-direction: column;
-      padding: 20px;
-    }
-
-    .contact-image img {
-      width: 50%;
-    }
-
-    .contact-details {
-      text-align: center;
-      padding: 10px;
-    }
-
-    .contact-details h2 {
-      font-size: 2.5rem;
-    }
-
-    .contact-details h3 {
-      font-size: 1.5rem;
-    }
-
-    .contact-info p {
-      justify-content: center;
-    }
-
-    .footer {
-      margin-top: 20px;
-    }
-}
-
-@media (max-width: 480px) {
-    .contact-image img {
-      width: 60%;
-    }
-
-    .contact-details h2 {
-      font-size: 2rem;
-    }
-
-    .contact-details h3 {
-      font-size: 1.2rem;
-    }
-
-    .contact-info p {
-      font-size: 1rem;
-    }
-
-    .footer p {
-      font-size: 0.9rem;
-    }
+@media (max-width: 720px) {
+  .contact-page {
+    padding: 60px 20px 20px;
+  }
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .contact-card {
+    padding: 24px;
+  }
 }

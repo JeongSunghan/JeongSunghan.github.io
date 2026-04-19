@@ -1,249 +1,151 @@
-import React, { useRef, useEffect, useState } from "react";
-
-import "../styles/Projects.css";
+import React, { useMemo, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaGithub } from "react-icons/fa";
+import { HiArrowUpRight } from "react-icons/hi2";
 import projectsData from "../data/projectsData";
-import Footer from "../components/Footer";
-import ProjectCard from "../components/ProjectCard";
+import "../styles/Projects.css";
 
-const Projects = () => {
-  const containerRef = useRef(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [isInteractive, setIsInteractive] = useState(false);
+const FILTERS = ["All", "Team", "Solo", "Game"];
 
-  // 카드 위치, 스타일 계산
-  const calculateCardStyle = (index, currentIndex) => {
-    if (index === currentIndex) {
-      return {
-        opacity: 1,
-        zIndex: 2,
-        pointerEvents: "auto",
-        transform: "none",
-        transition: "opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
-        position: "absolute",
-        left: 0,
-        right: 0,
-        margin: "0 auto",
-      };
-    } else {
-      return {
-        opacity: 0,
-        zIndex: 1,
-        pointerEvents: "none",
-        transform: "none",
-        transition: "opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
-        position: "absolute",
-        left: 0,
-        right: 0,
-        margin: "0 auto",
-      };
-    }
-  };
+export default function Projects() {
+  const [filter, setFilter] = useState("All");
 
-  // 마우스 휠 감지 및 스크롤 처리
-  useEffect(() => {
-    const handleWheel = (event) => {
-      if (isAnimating) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      const isMouseOverContainer =
-        event.clientY >= rect.top &&
-        event.clientY <= rect.bottom &&
-        event.clientX >= rect.left &&
-        event.clientX <= rect.right;
-
-      if (isMouseOverContainer) {
-        // 수평 스크롤이 더 크면 페이지 스크롤 막기
-        if (Math.abs(event.deltaX) > Math.abs(event.deltaY)) {
-          event.preventDefault();
-        }
-
-        setIsAnimating(true);
-        setTimeout(() => setIsAnimating(false), 600);
-
-        // 스크롤 방향에 따라 카드 변경
-        if (event.deltaY > 0 || event.deltaX > 0) {
-          setCurrentIndex((prev) => (prev + 1) % projectsData.length);
-        } else {
-          setCurrentIndex(
-            (prev) => (prev - 1 + projectsData.length) % projectsData.length
-          );
-        }
-  
-      }
-    };
-
-    // 터치 이벤트 처리
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    const handleTouchStart = (event) => {
-      touchStartX = event.touches[0].clientX;
-    };
-
-    const handleTouchMove = (event) => {
-      touchEndX = event.touches[0].clientX;
-    };
-
-    const handleTouchEnd = () => {
-      if (isAnimating) return;
-
-      const touchDiff = touchStartX - touchEndX;
-      if (Math.abs(touchDiff) > 50) {
-        setIsAnimating(true);
-        setTimeout(() => setIsAnimating(false), 600);
-
-        if (touchDiff > 0) {
-          setCurrentIndex((prev) => (prev + 1) % projectsData.length);
-        } else {
-          setCurrentIndex(
-            (prev) => (prev - 1 + projectsData.length) % projectsData.length
-          );
-        }
-      }
-    };
-
-    const container = containerRef.current;
-    if (container) {      
-      container.addEventListener("touchstart", handleTouchStart, {
-        passive: true,
-      });
-      container.addEventListener("touchmove", handleTouchMove, {
-        passive: true,
-      });
-      container.addEventListener("touchend", handleTouchEnd, { passive: true });
-    }
-
-    return () => {
-      if (container) {
-        container.removeEventListener("touchstart", handleTouchStart);
-        container.removeEventListener("touchmove", handleTouchMove);
-        container.removeEventListener("touchend", handleTouchEnd);
-      }
-    };
-  }, [isAnimating, projectsData.length]);
-
-  const handleClick = (index) => {
-    if (isAnimating || index === currentIndex) return;
-    setIsAnimating(true);
-    setTimeout(() => setIsAnimating(false), 600);
-    setCurrentIndex(index);
-  };
-
-  const handleNext = () => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-    setTimeout(() => setIsAnimating(false), 600);
-    setCurrentIndex((prev) => (prev + 1) % projectsData.length);
-  };
-
-  const handlePrev = () => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-    setTimeout(() => setIsAnimating(false), 600);
-    setCurrentIndex(
-      (prev) => (prev - 1 + projectsData.length) % projectsData.length
-    );
-  };
-
-  // 프로젝트 인디케이터 렌더링
-  const renderIndicators = () => {
-    return (
-      <div className="project-indicators">
-        {projectsData.map((_, index) => (
-          <span
-            key={`indicator-${index}`}
-            className={`indicator ${index === currentIndex ? "active" : ""}`}
-            onClick={() => handleClick(index)}
-          />
-        ))}
-      </div>
-    );
-  };
-
-  // 현재 프로젝트 정보 표시
-  const currentProject = projectsData[currentIndex];
+  const visible = useMemo(() => {
+    if (filter === "All") return projectsData;
+    if (filter === "Team")
+      return projectsData.filter((p) => p.tags?.includes("Team"));
+    if (filter === "Solo")
+      return projectsData.filter((p) => p.role === "Solo");
+    if (filter === "Game")
+      return projectsData.filter((p) =>
+        p.tags?.some((t) => t.toLowerCase().includes("game"))
+      );
+    return projectsData;
+  }, [filter]);
 
   return (
-    <div
-      className="projects-page"
-      style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}
-    >
-      <h2 className="projects-title">Projects</h2>
-      {/* <p className="projects-description">평소 만들어 왔던 프로젝트들..</p> */}
-      <div
-        className="projects-container"
-        ref={containerRef}
-        style={{ position: "relative", minHeight: "420px", flex: "1 0 auto" }}
-        onMouseEnter={() => setIsInteractive(true)}
-        onMouseLeave={() => setIsInteractive(false)}
+    <div className="projects-page">
+      <motion.header
+        className="projects-header"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7 }}
       >
-        <button
-          className={`project-arrow left-arrow ${
-            isInteractive ? "visible" : ""
-          }`}
-          onClick={handlePrev}
-          aria-label="Previous project"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M15 18l-6-6 6-6" />
-          </svg>
-        </button>
-        {projectsData.map((project, index) => {
-          const style = calculateCardStyle(index, currentIndex);
-          return (
-            <ProjectCard
-              key={project.id}
-              project={project}
-              style={style}
-              onClick={() => handleClick(index)}
-              isActive={index === currentIndex}
-            />
-          );
-        })}
-        <button
-          className={`project-arrow right-arrow ${
-            isInteractive ? "visible" : ""
-          }`}
-          onClick={handleNext}
-          aria-label="Next project"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M9 18l6-6-6-6" />
-          </svg>
-        </button>
-      </div>
+        <span className="eyebrow">02 — Work</span>
+        <h1>
+          <span className="grad-text">Projects</span> I've shipped.
+        </h1>
+        <p>
+          팀으로, 혼자서 완주한 프로젝트들입니다. 각 카드에서 기술 스택과
+          소스코드를 확인할 수 있습니다.
+        </p>
 
-      {renderIndicators()}
+        <div className="projects-filters" role="tablist" aria-label="Filter projects">
+          {FILTERS.map((f) => (
+            <button
+              key={f}
+              className={`projects-filter ${filter === f ? "is-active" : ""}`}
+              onClick={() => setFilter(f)}
+              role="tab"
+              aria-selected={filter === f}
+            >
+              {f}
+              <span className="projects-filter__count">
+                {f === "All"
+                  ? projectsData.length
+                  : f === "Team"
+                  ? projectsData.filter((p) => p.tags?.includes("Team")).length
+                  : f === "Solo"
+                  ? projectsData.filter((p) => p.role === "Solo").length
+                  : projectsData.filter((p) =>
+                      p.tags?.some((t) => t.toLowerCase().includes("game"))
+                    ).length}
+              </span>
+            </button>
+          ))}
+        </div>
+      </motion.header>
 
-      <div className="current-project-info">
-        <p className="project-tech-stack">{currentProject.techStack}</p>
-      </div>
+      <motion.div layout className="projects-grid">
+        <AnimatePresence mode="popLayout">
+          {visible.map((p, i) => (
+            <motion.article
+              key={p.id}
+              layout
+              className={`project-card ${p.featured ? "is-featured" : ""}`}
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -24 }}
+              transition={{ duration: 0.5, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -4 }}
+            >
+              <div className="project-card__media">
+                <img src={p.img} alt={`${p.title} 스크린샷`} loading="lazy" />
+                <div className="project-card__media-overlay" />
+                <div className="project-card__tags">
+                  {p.tags?.map((t) => (
+                    <span key={t} className="project-card__tag">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
 
-      <div style={{ flex: "0 0 auto" }}>
-        <Footer />
-      </div>
+              <div className="project-card__body">
+                <div className="project-card__meta mono">
+                  <span>{p.year}</span>
+                  <span>·</span>
+                  <span>{p.role}</span>
+                </div>
+                <h3 className="project-card__title">
+                  {p.title}
+                  <span className="project-card__subtitle"> — {p.subtitle}</span>
+                </h3>
+                <p className="project-card__desc">{p.description}</p>
+
+                <div className="project-card__tech">
+                  {p.techStack?.map((t) => (
+                    <span key={t} className="project-card__tech-item">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="project-card__actions">
+                  {p.github && (
+                    <a
+                      href={p.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="project-card__btn"
+                      aria-label={`${p.title} GitHub 저장소`}
+                    >
+                      <FaGithub /> <span>Code</span>
+                    </a>
+                  )}
+                  {p.link && (
+                    <a
+                      href={p.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="project-card__btn project-card__btn--primary"
+                      aria-label={`${p.title} 라이브 데모`}
+                    >
+                      <HiArrowUpRight /> <span>Visit</span>
+                    </a>
+                  )}
+                </div>
+              </div>
+            </motion.article>
+          ))}
+        </AnimatePresence>
+      </motion.div>
+
+      {visible.length === 0 && (
+        <div className="projects-empty">
+          <p>해당 조건의 프로젝트가 없습니다.</p>
+        </div>
+      )}
     </div>
   );
-};
-
-export default Projects;
+}
