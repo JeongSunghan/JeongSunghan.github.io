@@ -3,7 +3,7 @@
   const $ = (id) => document.getElementById(id);
   const screens = [...document.querySelectorAll(".screen")];
   const submitButtons = ["yes", "maybe", "submitNo", "skipReason"].map($).filter(Boolean);
-  const cutoff = new Date("2026-12-04T15:00:00.000Z"); // 2026-12-05 00:00 KST
+  const cutoff = new Date("2026-12-05T15:00:00.000Z"); // 2026-12-06 00:00 KST
   let personName = "";
   let busy = false;
   let client = null;
