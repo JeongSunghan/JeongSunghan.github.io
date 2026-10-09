@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#143c2e"><meta name="description" content="2026 연말 모임 참석 여부를 알려주세요.">
+<title>우리의 연말 모임 · 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&display=swap');
+:root{--pine:#143c2e;--pine2:#235744;--red:#b94343;--cream:#fff8e9;--paper:#fffdf7;--gold:#d6a94e;--ink:#26352c;--muted:#7a8178;--line:#e9dfc8}
+*{box-sizing:border-box}html{min-height:100%;background:var(--pine)}body{margin:0;color:var(--ink);font-family:'Gowun Dodum',sans-serif;background:radial-gradient(ellipse at 50% 0%,#2f684b 0%,var(--pine) 64%);min-height:100vh;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.12;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:31px 31px}
+.lights{position:fixed;top:0;left:0;right:0;height:30px;display:flex;justify-content:space-around;z-index:2;pointer-events:none}.lights:before{content:"";position:absolute;top:0;left:-3%;width:106%;height:19px;border-top:2px solid #d9c18a;border-radius:50%}.bulb{width:9px;height:14px;margin-top:9px;border-radius:50% 50% 45% 45%;background:#ffdc79;box-shadow:0 0 13px #ffdc79;animation:twinkle 2.4s infinite alternate}.bulb:nth-child(3n){background:#ef8c80;box-shadow:0 0 13px #ef8c80;animation-delay:.7s}.bulb:nth-child(2n){background:#c4e4a4;box-shadow:0 0 13px #c4e4a4;animation-delay:1.2s}
+@keyframes twinkle{to{opacity:.55;filter:brightness(.8)}}@keyframes bob{50%{transform:translateY(-7px) rotate(2deg)}}@keyframes fall{to{transform:translateY(105vh) rotate(360deg)}}@keyframes pop{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:none}}
+.snow{position:fixed;top:-20px;color:#fff8e8;opacity:.8;pointer-events:none;z-index:1;animation:fall linear infinite}.wrap{width:min(100% - 28px,480px);margin:0 auto;padding:54px 0 34px;position:relative;z-index:3}.topline{text-align:center;color:#e8d7a8;font-size:11px;letter-spacing:3px;margin:7px 0 15px}.card{background:var(--paper);border:3px solid #e9d6a6;border-radius:26px;padding:25px 22px 22px;box-shadow:0 16px 0 #0c2c21,0 22px 50px #061c1580;position:relative;overflow:hidden;animation:pop .35s ease both}.card:before{content:"";position:absolute;inset:7px;border:1px dashed #e5d5b5;border-radius:18px;pointer-events:none}.content{position:relative;z-index:1}.stamp{display:inline-block;background:#f6e7c6;color:#7d5722;border-radius:99px;padding:7px 12px;font-size:11px;letter-spacing:1px;font-weight:bold}.hero{text-align:center}.cat{font-size:78px;line-height:1.3;display:block;filter:drop-shadow(0 5px 0 #f0dfbb);animation:bob 3s ease-in-out infinite}.eyebrow{font-size:12px;color:var(--red);font-weight:bold;letter-spacing:2px;margin:12px 0 7px}h1,h2{font-family:'Jua',sans-serif;font-weight:400;line-height:1.25;margin:0}h1{font-size:clamp(29px,8vw,38px);color:var(--pine)}h2{font-size:27px;color:var(--pine)}.sub{font-size:14px;line-height:1.7;color:#687268;margin:12px auto 20px;max-width:310px}.eventbox{display:flex;align-items:center;justify-content:center;gap:10px;background:#f7f0df;border-radius:15px;padding:13px;margin:20px 0 15px}.eventbox strong{font-family:'Jua';font-size:17px;color:var(--red)}.eventbox small{display:block;color:#786e5a;font-size:11px;margin-top:4px}.divider{height:1px;background:var(--line);margin:19px 0}.field-label{display:block;font-size:13px;font-weight:bold;margin:0 0 8px}.input,.textarea{width:100%;border:1.5px solid #dfd3b9;background:#fffefa;border-radius:13px;padding:14px;font:inherit;font-size:16px;outline:none;color:var(--ink)}.input:focus,.textarea:focus{border-color:var(--pine2);box-shadow:0 0 0 3px #23574418}.hint{font-size:11px;color:var(--muted);line-height:1.6;margin:8px 2px 0}.btn{width:100%;border:0;border-radius:14px;padding:15px 14px;font:18px 'Jua',sans-serif;cursor:pointer;transition:transform .15s,filter .15s}.btn:active{transform:scale(.98)}.primary{background:var(--pine);color:white;box-shadow:0 4px 0 #0b2b20}.secondary{background:#f7e9d1;color:#72532a;border:1px solid #e9d2a6}.red{background:var(--red);color:white;box-shadow:0 4px 0 #842d30}.buttons{display:grid;gap:11px;margin-top:17px}.buttons.two{grid-template-columns:1fr 1fr}.buttons.two .btn{font-size:17px;padding:16px 7px}.smallbtn{font-size:14px!important;padding:12px!important}.screen{display:none}.screen.active{display:block}.notice{font-size:12px;color:#8a7960;line-height:1.6;text-align:center;margin:15px 0 0}.reason{margin-top:20px}.footer{text-align:center;color:#d9d6bb;font-size:11px;line-height:1.8;padding:20px 10px}.footer strong{color:#f1dba0}.tiny{font-size:11px;color:var(--muted);text-align:center;margin-top:15px}.mapblank{height:112px;border:1.5px dashed #d6c8a7;background:#f8f3e8;border-radius:16px;display:flex;align-items:center;justify-content:center;text-align:center;color:#9b927f;font-size:12px;line-height:1.8;margin-top:13px}.mapblank b{display:block;color:#81765f;font-size:13px}.error{font-size:12px;color:#b94343;margin:8px 0 0;min-height:16px}.resulticon{font-size:72px;display:block;margin:12px auto;animation:bob 2.6s infinite}.rule{font-size:12px;color:#827866;line-height:1.8;text-align:center}.hide{display:none!important}
+@media(min-width:500px){.wrap{padding-top:62px}.card{padding:30px 28px 26px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
+</style></head>
+<body>
+<div class="lights" aria-hidden="true"><i class="bulb"></i><i class="bulb"></i><i class="bulb"></i><i class="bulb"></i><i class="bulb"></i><i class="bulb"></i><i class="bulb"></i><i class="bulb"></i><i class="bulb"></i><i class="bulb"></i><i class="bulb"></i><i class="bulb"></i><i class="bulb"></i><i class="bulb"></i><i class="bulb"></i><i class="bulb"></i><i class="bulb"></i><i class="bulb"></i><i class="bulb"></i><i class="bulb"></i><i class="bulb"></i><i class="bulb"></i><i class="bulb"></i></div>
+<main class="wrap">
+<div class="topline">✦ A LITTLE HOLIDAY REUNION ✦</div>
+<section class="card">
+<div class="content">
+<div id="entry" class="screen active">
+<div class="hero"><span class="cat" aria-hidden="true">🐈🎄</span><div class="eyebrow">2026 · YEAR-END PARTY</div><h1>우리 연말에<br>만나자!</h1><p class="sub">오랜만에 모여서 웃고 떠들자고.<br>올해가 가기 전에 얼굴 한 번 보자!</p></div>
+<div class="eventbox"><span style="font-size:28px">🎁</span><div><strong>12월 19일 토요일</strong><small>주최자 · 이형주</small></div></div>
+<label class="field-label" for="name">이름을 알려줘!</label><input class="input" id="name" maxlength="20" autocomplete="name" placeholder="예: 김민수 또는 민수"><p class="hint">친구들이 알아볼 수 있는 한글 이름으로 입력해줘. (한글·공백만 가능)</p><p class="error" id="nameError" role="alert"></p>
+<div class="buttons"><button class="btn primary" id="enter">모임 초대장 열기 →</button></div>
+<p class="tiny">참석 여부는 12월 5일까지 알려줘!</p>
+</div>
+<div id="choice" class="screen">
+<div class="hero"><span class="cat">🎅🏻🐈</span><div class="eyebrow">YOU'RE INVITED</div><h2><span id="helloName"></span>, 올 거지?</h2><p class="sub">너도 오면 진짜 재밌을 것 같아.<br>이번 연말엔 다 같이 보자!</p></div>
+<div class="eventbox"><span style="font-size:25px">📅</span><div><strong>2026년 12월 19일</strong><small>장소와 시간은 정해지는 대로 알려줄게</small></div></div>
+<div class="buttons two"><button class="btn primary" id="yes">참석할래!!</button><button class="btn secondary" id="no">불참할래…</button></div>
+<div class="mapblank"><div>📍<b>모임 장소</b>장소와 시간이 정해지면 여기에 공개할게!</div></div>
+</div>
+<div id="yesPage" class="screen">
+<div class="hero"><span class="resulticon">🐱🎉</span><div class="eyebrow">YAY! SEE YOU SOON</div><h2>오랜만에 얼굴 보겠다!!</h2><p class="sub">와줘서 고마워!<br>우리 만나서 재밌게 놀아보자 🎄</p></div>
+<div class="eventbox"><span style="font-size:25px">💌</span><div><strong>참석 의사 확인!</strong><small id="yesSummary">참석한다고 알려줘서 고마워.</small></div></div>
+<p class="rule">장소와 시간은 정해지는 대로 공유할게.</p>
+<div class="buttons"><button class="btn secondary" id="backChoice1">응답 다시 선택하기</button></div>
+</div>
+<div id="noPage" class="screen">
+<div class="hero"><span class="resulticon">🥺🐈</span><div class="eyebrow">WAIT A MINUTE...</div><h2>정말?? 오랜만인데??</h2><p class="sub">30분만이라도 얼굴 보고 가면 안 돼? 🥹<br>그래도 못 오면 어쩔 수 없지…!</p></div>
+<div class="buttons"><button class="btn red" id="maybe">ㅎㅎ 그래도 참석할래!</button><button class="btn secondary" id="stillNo">미안… 이번엔 어려울 것 같아</button></div>
+</div>
+<div id="thanksPage" class="screen">
+<div class="hero"><span class="resulticon">🎊🐈🎄</span><div class="eyebrow">YOU MADE OUR DAY</div><h2>와줘서 고마워!!</h2><p class="sub">마음 바꿔줘서 고마워.<br>12월 19일에 만나서 신나게 놀자!</p></div>
+<div class="eventbox"><span style="font-size:25px">✨</span><div><strong>참석으로 변경 완료</strong><small>시간과 장소는 추후 공지할게.</small></div></div>
+<div class="buttons"><button class="btn secondary" id="backChoice2">응답 다시 선택하기</button></div>
+</div>
+<div id="reasonPage" class="screen">
+<div class="hero"><span class="resulticon">💌🐈</span><div class="eyebrow">WE'LL MISS YOU</div><h2>ㅠㅠ 알겠어…</h2><p class="sub">못 와도 이해해!<br>혹시 괜찮다면 불참 사유를 알려줘.</p></div>
+<label class="field-label" for="reason">불참 사유 <span style="font-weight:normal;color:#8a8a80">(선택)</span></label><textarea class="textarea" id="reason" rows="3" maxlength="300" placeholder="일정이 겹쳐서… / 다음에 꼭 보자!"></textarea><p class="hint">사유는 주최자가 인원과 일정을 정리하는 용도로만 사용해.</p><p class="error" id="reasonError" role="alert"></p>
+<div class="buttons"><button class="btn primary" id="submitNo">불참으로 알려주기</button><button class="btn secondary smallbtn" id="skipReason">사유 없이 제출하기</button></div>
+</div>
+<div id="donePage" class="screen">
+<div class="hero"><span class="resulticon">🧣🐈</span><div class="eyebrow">THANK YOU FOR REPLYING</div><h2>답변 확인했어!</h2><p class="sub">이번엔 못 봐서 아쉽지만<br>다음에는 꼭 만나자.</p></div><div class="buttons"><button class="btn secondary" id="editReply">응답 수정하기</button></div>
+</div>
+<div class="divider"></div>
+<p class="notice">모집 마감 · 2026년 12월 5일<br>마감 후 참석 문의는 주최자 <b>이형주</b>에게 개인톡!</p>
+</div></section>
+<footer class="footer">MADE WITH <strong>HOLIDAY SPIRIT</strong><br>따뜻하고 즐거운 연말 보내자</footer>
+</main>
+<script>
+const screens=[...document.querySelectorAll('.screen')];let personName='';let answer='';let previous='entry';
+function show(id){screens.forEach(s=>s.classList.toggle('active',s.id===id));window.scrollTo({top:0,behavior:'smooth'});}
+function saveLocal(status,reason=''){try{const all=JSON.parse(localStorage.getItem('holiday-rsvp-demo')||'{}');all[personName]={name:personName,status,reason,updatedAt:new Date().toISOString()};localStorage.setItem('holiday-rsvp-demo',JSON.stringify(all));}catch(e){}}
+function validName(v){return /^[가-힣]+(?:\s[가-힣]+)*$/.test(v)&&v.replace(/\s/g,'').length>=2;}
+document.getElementById('enter').addEventListener('click',()=>{const input=document.getElementById('name');const v=input.value.trim().replace(/\s+/g,' ');const err=document.getElementById('nameError');if(!validName(v)){err.textContent='한글 이름을 2자 이상 입력해줘. 숫자·영어·특수문자는 사용할 수 없어.';input.focus();return;}personName=v;document.getElementById('helloName').textContent=personName;err.textContent='';show('choice');});
+document.getElementById('name').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('enter').click()});
+document.getElementById('yes').addEventListener('click',()=>{answer='yes';saveLocal('yes');document.getElementById('yesSummary').textContent=personName+'의 참석 의사를 이 기기 브라우저에 임시 저장했어.';show('yesPage');});
+document.getElementById('no').addEventListener('click',()=>{answer='no';show('noPage')});
+document.getElementById('maybe').addEventListener('click',()=>{answer='yes';saveLocal('yes');show('thanksPage')});
+document.getElementById('stillNo').addEventListener('click',()=>show('reasonPage'));
+function submitNo(){answer='no';saveLocal('no',document.getElementById('reason').value.trim());show('donePage');}
+document.getElementById('submitNo').addEventListener('click',submitNo);document.getElementById('skipReason').addEventListener('click',submitNo);
+document.getElementById('backChoice1').addEventListener('click',()=>show('choice'));document.getElementById('backChoice2').addEventListener('click',()=>show('choice'));document.getElementById('editReply').addEventListener('click',()=>show('choice'));
+for(let i=0;i<18;i++){const f=document.createElement('span');f.className='snow';f.textContent=i%3===0?'✳':'❄';f.style.left=(Math.random()*100)+'%';f.style.fontSize=(9+Math.random()*12)+'px';f.style.animationDuration=(9+Math.random()*13)+'s';f.style.animationDelay=(-Math.random()*18)+'s';document.body.appendChild(f);}
+</script></body></html>
