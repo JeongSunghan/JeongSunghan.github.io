@@ -34,13 +34,16 @@ begin
      or char_length(clean_name) > 20 then
     raise exception 'INVALID_NAME' using errcode = '22023';
   end if;
-  if p_status not in ('yes', 'no') then
+  if p_status is null or p_status not in ('yes', 'no') then
     raise exception 'INVALID_STATUS' using errcode = '22023';
+  end if;
+  if char_length(trim(coalesce(p_reason, ''))) > 300 then
+    raise exception 'INVALID_REASON' using errcode = '22023';
   end if;
   if p_status = 'yes' and clean_reason <> '' then
     clean_reason := '';
   end if;
-  if now() >= timestamptz '2026-12-04 15:00:00+00' then
+  if now() >= timestamptz '2026-12-05 15:00:00+00' then
     raise exception 'RSVP_CLOSED' using errcode = 'P0001';
   end if;
 
