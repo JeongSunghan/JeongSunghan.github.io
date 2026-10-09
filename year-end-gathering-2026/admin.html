@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#143c2e"><title>모임 응답 관리 · 2026</title>
+<style>
+:root{color-scheme:light;--pine:#143c2e;--cream:#fff8e9;--red:#b94343;--line:#e9dfc8}
+*{box-sizing:border-box}body{margin:0;background:#f5f1e6;color:#26352c;font-family:system-ui,-apple-system,sans-serif}
+main{max-width:1000px;margin:30px auto;padding:0 16px}header{background:var(--pine);color:#fff8e9;padding:24px;border-radius:18px}h1{margin:0 0 8px;font-size:24px}p{line-height:1.6}.panel{background:white;border:1px solid var(--line);border-radius:16px;padding:20px;margin-top:16px;box-shadow:0 5px 20px #172d1a0a}
+input,button{font:inherit;padding:12px;border-radius:10px}input{width:100%;border:1px solid #cfc7b5;margin:5px 0 12px}button{border:0;background:var(--pine);color:white;cursor:pointer;margin:4px 5px 4px 0}button.secondary{background:#e9dfc8;color:#26352c}button:disabled{opacity:.5;cursor:wait}.status{padding:12px;background:#f7f0df;border-radius:10px;white-space:pre-wrap}.error{background:#fbe8e6;color:#8e2929}.success{background:#e7f3e7;color:#24583c}.hidden{display:none!important}.stats{display:flex;gap:12px;flex-wrap:wrap}.stat{background:#f7f0df;border-radius:12px;padding:12px;min-width:110px}.stat strong{display:block;font-size:24px}table{width:100%;border-collapse:collapse;min-width:620px}th,td{text-align:left;padding:12px;border-bottom:1px solid var(--line);vertical-align:top}th{background:#faf7ef}td.reason{white-space:pre-wrap;max-width:300px;overflow-wrap:anywhere}.tablewrap{overflow:auto}small{color:#716f65}.danger{color:#9a2f2f}@media(max-width:600px){main{margin:14px auto}.panel{padding:14px}header{padding:18px}}
+</style></head>
+<body><main>
+<header><h1>2026 연말 모임 · 응답 관리</h1><p>주최자 이형주 전용 페이지. 등록된 Supabase 계정으로 로그인해야 응답을 조회할 수 있어.</p></header>
+<section class="panel" id="loginPanel"><h2>주최자 로그인</h2><p>Supabase에 등록한 주최자 이메일로 로그인 링크를 받을 수 있어.</p>
+<label for="email">이메일</label><input id="email" type="email" autocomplete="email" placeholder="organizer@example.com" maxlength="254">
+<button id="sendLink">로그인 링크 보내기</button><button class="secondary" id="refreshSession">로그인 상태 확인</button>
+<p id="loginStatus" class="status" role="status" aria-live="polite">설정 상태를 확인하고 있어…</p></section>
+<section class="panel hidden" id="dataPanel"><div class="stats"><div class="stat"><small>전체</small><strong id="total">0</strong></div><div class="stat"><small>참석</small><strong id="yesCount">0</strong></div><div class="stat"><small>불참</small><strong id="noCount">0</strong></div></div>
+<p><button id="reload">응답 새로고침</button><button class="secondary" id="export">CSV 내보내기</button><button class="secondary" id="logout">로그아웃</button></p>
+<div id="dataStatus" class="status" role="status" aria-live="polite"></div><div class="tablewrap"><table><thead><tr><th>이름</th><th>응답</th><th>불참 사유</th><th>마지막 수정 (KST)</th></tr></thead><tbody id="rows"><tr><td colspan="4">로그인 후 조회할 수 있어.</td></tr></tbody></table></div>
+</section>
+<p><small>응답 정보는 인원 조율 목적으로만 사용해. 이름은 인증 수단이 아니므로 동일 이름 응답은 덮어쓰기 될 수 있어.</small></p>
+</main>
+<script src="./config.js"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+(() => {
+"use strict";
+const $=id=>document.getElementById(id);let client=null;let rows=[];
+function message(id,text,type=""){const e=$(id);e.textContent=text;e.className="status"+(type?" "+type:"");}
+function friendly(e){const m=String(e?.message||e||"");if(/NOT_AUTHORIZED|42501/i.test(m))return "이 계정은 관리자 등록이 되어 있지 않아. Supabase SQL에서 auth user UUID를 rsvp_admins에 등록해줘.";if(/Invalid login|Email not confirmed|Auth session missing/i.test(m))return "로그인이 확인되지 않아. 이메일 링크를 열고 다시 시도해줘.";if(/fetch|network/i.test(m))return "서버 연결에 실패했어. 인터넷과 Supabase 설정을 확인해줘.";return "요청에 실패했어. Supabase 설정과 관리자 권한을 확인해줘.";}
+async function loadRows(){if(!client)throw new Error("CONFIG_MISSING");message("dataStatus","응답 목록을 불러오는 중…");const {data,error}=await client.rpc("admin_list_rsvps");if(error)throw error;rows=Array.isArray(data)?data:[];render();message("dataStatus","총 "+rows.length+"건을 불러왔어.","success");}
+function render(){const yes=rows.filter(r=>r.status==="yes").length;const no=rows.filter(r=>r.status==="no").length;$("total").textContent=String(rows.length);$("yesCount").textContent=String(yes);$("noCount").textContent=String(no);const body=$("rows");body.replaceChildren();if(!rows.length){const tr=document.createElement("tr"),td=document.createElement("td");td.colSpan=4;td.textContent="아직 제출된 응답이 없어.";tr.appendChild(td);body.appendChild(tr);return;}rows.forEach(r=>{const tr=document.createElement("tr");[r.name,r.status==="yes"?"참석":"불참",r.reason||"—",r.updated_at?new Intl.DateTimeFormat("ko-KR",{dateStyle:"short",timeStyle:"short",timeZone:"Asia/Seoul"}).format(new Date(r.updated_at)):"—"].forEach((value,i)=>{const td=document.createElement("td");td.textContent=String(value);if(i===2)td.className="reason";tr.appendChild(td);});body.appendChild(tr);});}
+function downloadCSV(){if(!rows.length){message("dataStatus","내보낼 응답이 없어.");return;}const header=["이름","응답","불참 사유","마지막 수정"];const cell=v=>'"'+String(v??"").replace(/"/g,'""')+'"';const content="\uFEFF"+[header,...rows.map(r=>[r.name,r.status==="yes"?"참석":"불참",r.reason,r.updated_at?new Intl.DateTimeFormat("ko-KR",{dateStyle:"short",timeStyle:"short",timeZone:"Asia/Seoul"}).format(new Date(r.updated_at)):""])].map(row=>row.map(cell).join(",")).join("\r\n");const url=URL.createObjectURL(new Blob([content],{type:"text/csv;charset=utf-8;"}));const a=document.createElement("a");a.href=url;a.download="year-end-rsvp-2026.csv";document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);}
+async function refreshSession(){try{const {data,error}=await client.auth.getSession();if(error)throw error;if(data.session){$("loginPanel").classList.add("hidden");$("dataPanel").classList.remove("hidden");message("loginStatus","로그인 완료","success");await loadRows();}else{message("loginStatus","로그인되지 않았어. 이메일 로그인 링크를 요청해줘.");}}catch(e){console.error(e);message("loginStatus",friendly(e),"error");}}
+function init(){if(!window.RSVP_CONFIG?.supabaseUrl||!window.RSVP_CONFIG?.supabaseAnonKey){message("loginStatus","Supabase 설정이 없어. config.js에 URL과 anon/publishable key를 입력해줘.","error");$("sendLink").disabled=true;return;}if(!window.supabase?.createClient){message("loginStatus","Supabase 모듈을 불러오지 못했어. 네트워크를 확인해줘.","error");return;}client=window.supabase.createClient(window.RSVP_CONFIG.supabaseUrl,window.RSVP_CONFIG.supabaseAnonKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});client.auth.onAuthStateChange((event,session)=>{if(session){$("loginPanel").classList.add("hidden");$("dataPanel").classList.remove("hidden");if(event==="SIGNED_IN")setTimeout(()=>loadRows().catch(e=>message("dataStatus",friendly(e),"error")),0);}else{$("loginPanel").classList.remove("hidden");$("dataPanel").classList.add("hidden");}});refreshSession();}
+$("sendLink").addEventListener("click",async()=>{const email=$("email").value.trim();if(!email||!$("email").checkValidity()){message("loginStatus","올바른 이메일 주소를 입력해줘.","error");$("email").focus();return;}const b=$("sendLink");b.disabled=true;try{const redirectTo=new URL("./admin.html",location.href).href;const {error}=await client.auth.signInWithOtp({email,options:{emailRedirectTo:redirectTo}});if(error)throw error;message("loginStatus","로그인 링크를 보냈어. 이메일을 확인해줘.","success");}catch(e){console.error(e);message("loginStatus",friendly(e),"error");}finally{b.disabled=false;}});
+$("refreshSession").addEventListener("click",refreshSession);$("reload").addEventListener("click",()=>loadRows().catch(e=>{console.error(e);message("dataStatus",friendly(e),"error");}));$("export").addEventListener("click",downloadCSV);$("logout").addEventListener("click",async()=>{try{const {error}=await client.auth.signOut();if(error)throw error;rows=[];message("loginStatus","로그아웃했어.");}catch(e){message("dataStatus",friendly(e),"error");}});
+init();
+})();
+</script></body></html>
